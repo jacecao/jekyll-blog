@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="auto-width content">
+      {{ content }}
+    </div>
+
+    {% include footer.html %}
+    
+    <script src="{{ "/js/require.js" | prepend: site.baseurl }}" data-main="{{"/js/main"}}"></script>
+  </body>
+
+</html>
