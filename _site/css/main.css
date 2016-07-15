@@ -55,6 +55,11 @@
 {
 	margin-top: 20px;
 }
+.item-content p a
+{
+	color: #1e9fc4;
+	text-decoration: underline;
+}
 .item-blog p
 {
 	width: 90%;
