@@ -22,7 +22,7 @@
                     <li class="blog-tag">{{ category | first }}—(<span>{{ category | last | size }}</span> 篇)<span class="triangle"></span>
 	                    <ul class="tag-list">
 	                        {% for post in category.last %}
-	                            <li><a href="{{ post.url }}">{{ post.title }}</a> — {{ post.date | date:"%d/%m/%Y"}}</li>
+	                            <li><a href="{{ post.url }}">{{ post.title }} — {{ post.date | date:"%d/%m/%Y"}}</a></li>
 	                        {% endfor %}
 	                    </ul>
                     </li>
