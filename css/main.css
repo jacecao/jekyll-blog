@@ -210,12 +210,16 @@ a.prev-button:hover span
 	right: 0;
 	width: 300px;
 	background: #eee;
+<<<<<<< HEAD
 	border-left: 1px solid #d4d4d4;
 	transform: translate3d(300px, 0, 0);
+=======
+>>>>>>> origin/master
 	-o-transform: translate3d(300px, 0, 0);
 	-ms-transform: translate3d(300px, 0, 0);
 	-moz-transform: translate3d(300px, 0, 0);
 	-webkit-transform: translate3d(300px, 0, 0);
+<<<<<<< HEAD
 	transition: all 0.7s;
 	-o-transition: all 0.7s;
 	-ms-transition: all 0.7s;
@@ -225,10 +229,21 @@ a.prev-button:hover span
 .side-bar-active
 {
 	transform: translate3d(0, 0, 0);
+=======
+	transition: all 1s;
+	-o-transition: all 1s;
+	-ms-transition: all 1s;
+	-moz-transition: all 1s;
+	-webkit-transition: all 1s;
+}
+.side-bar-active
+{
+>>>>>>> origin/master
 	-o-transform: translate3d(0, 0, 0);
 	-ms-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	-webkit-transform: translate3d(0, 0, 0);
+<<<<<<< HEAD
 }
 .side-box
 {
@@ -352,4 +367,6 @@ a.prev-button:hover span
 	background: #eee;
 	color: #8c8c8c;
 	z-index: 100;
+=======
+>>>>>>> origin/master
 }
