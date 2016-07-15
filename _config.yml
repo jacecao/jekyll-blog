@@ -16,4 +16,4 @@ github_username:  jacecao
 
 # Build settings
 markdown: kramdown
-permalink: jekyll-blog/:year/:month/:day/:title
+permalink: /:year/:month/:day/:title
