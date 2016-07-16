@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-  <title>海鸥-HioU</title>
+  <title>HioU - 海鸥</title>
   <meta name="description" content="海鸥（HioU）的博客，前端开发
 ">
   <link rel="stylesheet" href="/css/default.css">
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://haiouyun.com/">
-  <link rel="alternate" type="application/rss+xml" title="海鸥-HioU" href="http://haiouyun.com/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="HioU - 海鸥" href="http://haiouyun.com/feed.xml">
 </head>
 
 
@@ -35,60 +35,49 @@
 
 
     <div class="auto-width content">
-      
-<div class="item-blog">
-    <div class="item-body">
-        <h1><a href="/2016/07/15/blog-how">这是一片测试文章</a></h1>
-        <div class="item-message">
-            <span class="write-time">编写时间：Jul 15, 2016</span>
-        </div>
-        <div class="item-content">
-            <p><p>这是一篇测试文章，主要目的在于测试<code class="highlighter-rouge">jekyll</code>头信息的生成原理，其中主要是查看头信息中的变量是如何工作，
-同时也几次机会熟悉一下<code class="highlighter-rouge">markdown</code>的书写方法。</p>
+      <div id="blog-list">
+  
+  <section class="item-blog">
+      <div class="item-body">
+          <h1><a href="/2016/07/15/blog-how">我的博客搭建记录-关于jeykll部署到github时资源获取出错</a></h1>
+          <div class="item-message">
+              <span class="write-time">编写时间：Jul 15, 2016</span>
+          </div>
+          <div class="item-content">
+              <p><p>将网页部署到github时，会出现一个问题，就是所有的访问资源链接失效，这个很奇怪，因为在在本地测试时网页资源获取是没有问题的，究竟是哪里的问题呢
+看了后台返回的提示信息显示的是在某某路径下得不到这个文件，很显然就是获取资源路径出现了问题，一开始以为是文件地址输入错误，检测一次后确定无误，再次细读错误提示信息，原来发现一个重要的问题，如果你是把博客发布到 ` github-pages ` 上时，文件引入地址得这样写：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">如果你的项目名字为：</span><span class="n">abc</span><span class="p">,</span>
+<span class="err">那么引入地址为：</span><span class="n">abc</span><span class="o">/</span><span class="n">css</span><span class="o">/</span><span class="n">xxxx</span><span class="p">.</span><span class="nf">css</span>
+<span class="err">即【你的项目】</span><span class="o">/</span><span class="err">文件夹</span><span class="o">/</span><span class="err">文件名</span></code></pre></figure>
 
 </p>
-            <a href="/2016/07/15/blog-how" class="item-button">阅读全文<span>&raquo;</span></a>
-        </div>
-    </div>
-    <div class="item-footer">
-        <div></div>
-    </div>
-</div>
-
-<div class="item-blog">
-    <div class="item-body">
-        <h1><a href="/2016/07/04/welcome-to-jekyll">Welcome to haiou</a></h1>
-        <div class="item-message">
-            <span class="write-time">编写时间：Jul 4, 2016</span>
-        </div>
-        <div class="item-content">
-            <p><p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-
-</p>
-            <a href="/2016/07/04/welcome-to-jekyll" class="item-button">阅读全文<span>&raquo;</span></a>
-        </div>
-    </div>
-    <div class="item-footer">
-        <div></div>
-    </div>
-</div>
-
-<div class="item-blog">
-    <div class="item-body">
-        <h1><a href="/2016/07/04/welcome-to-jekyll">Welcome to Jekyll!</a></h1>
-        <div class="item-message">
-            <span class="write-time">编写时间：Jul 4, 2016</span>
-        </div>
-        <div class="item-content">
-            <p><p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+              <a href="/2016/07/15/blog-how" class="item-button">阅读全文<span>&raquo;</span></a>
+          </div>
+      </div>
+      <div class="item-footer">
+          <div></div>
+      </div>
+  </section>
+  
+  <section class="item-blog">
+      <div class="item-body">
+          <h1><a href="/2016/07/04/welcome-to-jekyll">我的博客搭建记录-搭建jekyll环境</a></h1>
+          <div class="item-message">
+              <span class="write-time">编写时间：Jul 4, 2016</span>
+          </div>
+          <div class="item-content">
+              <p><p>3月就想通过<code class="highlighter-rouge">Github</code>来搭建一个自己的博客，但由于一直都在忙于学习，所以就耽搁到现在。我说说我使用的博客系统吧，<code class="highlighter-rouge">github</code>由于只能生成静态页面（没有数据交互），所以就需要借助一个能帮你处理博客内容的框架。</p>
 
 </p>
-            <a href="/2016/07/04/welcome-to-jekyll" class="item-button">阅读全文<span>&raquo;</span></a>
-        </div>
-    </div>
-    <div class="item-footer">
-        <div></div>
-    </div>
+              <a href="/2016/07/04/welcome-to-jekyll" class="item-button">阅读全文<span>&raquo;</span></a>
+          </div>
+      </div>
+      <div class="item-footer">
+          <div></div>
+      </div>
+  </section>
+    
 </div>
 
 
@@ -111,28 +100,12 @@
                 <h3>手记清单</h3>
                 <ul class="list-ul">
                     
-                    <li class="blog-tag">jekyll—(<span>1</span> 篇)<span class="triangle"></span>
+                    <li class="blog-tag">博客搭建记录—(<span>2</span> 篇)<span class="triangle"></span>
 	                    <ul class="tag-list">
 	                        
-	                            <li><a href="/2016/07/04/welcome-to-jekyll">Welcome to Jekyll! — 04/07/2016</a></li>
+	                            <li><a href="/2016/07/15/blog-how">我的博客搭建记录-关于jeykll部署到github时资源获取出错 — 15/07/2016</a></li>
 	                        
-	                    </ul>
-                    </li>
-                    
-                    <li class="blog-tag">update—(<span>1</span> 篇)<span class="triangle"></span>
-	                    <ul class="tag-list">
-	                        
-	                            <li><a href="/2016/07/04/welcome-to-jekyll">Welcome to Jekyll! — 04/07/2016</a></li>
-	                        
-	                    </ul>
-                    </li>
-                    
-                    <li class="blog-tag">test—(<span>2</span> 篇)<span class="triangle"></span>
-	                    <ul class="tag-list">
-	                        
-	                            <li><a href="/2016/07/15/blog-how">这是一片测试文章 — 15/07/2016</a></li>
-	                        
-	                            <li><a href="/2016/07/04/welcome-to-jekyll">Welcome to haiou — 04/07/2016</a></li>
+	                            <li><a href="/2016/07/04/welcome-to-jekyll">我的博客搭建记录-搭建jekyll环境 — 04/07/2016</a></li>
 	                        
 	                    </ul>
                     </li>
