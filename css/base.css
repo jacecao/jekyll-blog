@@ -152,6 +152,14 @@ body
 	{
 		max-width: 90%;
 	}
+	.item-content p
+	{
+		letter-spacing: 4px;
+	}
+	.item-description p
+	{
+		letter-spacing: 2px;
+	}
 	/************************************ project*************************** */
 	.item-project
 	{
@@ -172,7 +180,6 @@ body
 		width: 500px;
 		margin: 0 auto;
 	}
-<<<<<<< HEAD
 	/* **************  side-bar ************************** */
 	.blog-tag li
 	{
@@ -185,9 +192,6 @@ body
 		white-space: nowrap;
 		text-overflow: ellipsis;
 	}
-=======
->>>>>>> origin/master
-
 }
 
 @media screen and (max-width: 640px)
@@ -255,7 +259,7 @@ body
 	.content .item-blog p
 	{
 		font-size: 0.8em;
-		letter-spacing: 2px;
+		letter-spacing: 3px;
 		line-height: 1.8em;
 	}
 	/************************************ project*************************** */
@@ -277,7 +281,7 @@ body
 		width: 100%;
 		margin: 0 auto;
 	}
-<<<<<<< HEAD
+
 	/* *******************************side-bar**************** */
 	.side-bar
 	{
@@ -296,8 +300,7 @@ body
 		word-break: normal;
     	word-wrap: break-word;
 	}
-=======
->>>>>>> origin/master
+
 }
 
 /*********** header **************/

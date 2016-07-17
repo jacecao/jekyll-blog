@@ -21,7 +21,7 @@
 {
 	font-size: 0.9em;
 	line-height: 1.7;
-	letter-spacing: 2px;
+	/* letter-spacing: 2px; */
 	text-indent: 2em;
 	word-break: break-all;
 	color: #777575;
@@ -45,28 +45,36 @@
 	-ms-transition: all 0.8s;
 	-moz-transition: all 0.8s;
 }
-
 .item-message
 {
 	margin-top: 8px;
 	color: #B4B4B4;
 }
-.item-content
+.item-content,.item-description
 {
 	margin-top: 20px;
 }
-.item-content p a
+.item-content p a,.item-description p a
 {
 	color: #1e9fc4;
 	text-decoration: underline;
+}
+/* ************************* 代码高亮部分 ********************* */
+.highlight
+{
+	width: 90%;
+	margin: 10px auto;
+}
+.highlight pre
+{
+	text-align: left;
 }
 .item-blog p
 {
 	width: 90%;
 	margin: 0 auto;
-	text-align: left;
+	text-align: justify;
 	padding: 10px;
-
 }
 
 a.item-button
@@ -215,16 +223,12 @@ a.prev-button:hover span
 	right: 0;
 	width: 300px;
 	background: #eee;
-<<<<<<< HEAD
 	border-left: 1px solid #d4d4d4;
 	transform: translate3d(300px, 0, 0);
-=======
->>>>>>> origin/master
 	-o-transform: translate3d(300px, 0, 0);
 	-ms-transform: translate3d(300px, 0, 0);
 	-moz-transform: translate3d(300px, 0, 0);
 	-webkit-transform: translate3d(300px, 0, 0);
-<<<<<<< HEAD
 	transition: all 0.7s;
 	-o-transition: all 0.7s;
 	-ms-transition: all 0.7s;
@@ -234,7 +238,6 @@ a.prev-button:hover span
 .side-bar-active
 {
 	transform: translate3d(0, 0, 0);
-=======
 	transition: all 1s;
 	-o-transition: all 1s;
 	-ms-transition: all 1s;
@@ -243,12 +246,11 @@ a.prev-button:hover span
 }
 .side-bar-active
 {
->>>>>>> origin/master
+	transform: translate3d(0, 0, 0);
 	-o-transform: translate3d(0, 0, 0);
 	-ms-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	-webkit-transform: translate3d(0, 0, 0);
-<<<<<<< HEAD
 }
 .side-box
 {
@@ -372,6 +374,4 @@ a.prev-button:hover span
 	background: #eee;
 	color: #8c8c8c;
 	z-index: 100;
-=======
->>>>>>> origin/master
 }

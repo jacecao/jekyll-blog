@@ -6,20 +6,21 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 16 Jul 2016 17:14:03 +0800</pubDate>
-    <lastBuildDate>Sat, 16 Jul 2016 17:14:03 +0800</lastBuildDate>
+    <pubDate>Sun, 17 Jul 2016 22:08:15 +0800</pubDate>
+    <lastBuildDate>Sun, 17 Jul 2016 22:08:15 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>我的博客搭建记录-关于jeykll部署到github时资源获取出错</title>
-        <description>&lt;p&gt;将网页部署到github时，会出现一个问题，就是所有的访问资源链接失效，这个很奇怪，因为在在本地测试时网页资源获取是没有问题的，究竟是哪里的问题呢
-看了后台返回的提示信息显示的是在某某路径下得不到这个文件，很显然就是获取资源路径出现了问题，一开始以为是文件地址输入错误，检测一次后确定无误，再次细读错误提示信息，原来发现一个重要的问题，如果你是把博客发布到 ` github-pages ` 上时，文件引入地址得这样写：&lt;/p&gt;
+        <description>&lt;p&gt;将网页部署到github时，会出现一个问题，就是所有的访问资源链接失效，这个很奇怪，因为在在本地测试时网页资源获取是没有问题的，究竟是哪里的问题呢?&lt;/p&gt;
+
+&lt;p&gt;看了后台返回的提示信息显示的是在某某路径下得不到这个文件，很显然就是获取资源路径出现了问题，一开始以为是文件地址输入错误，检测一次后确定无误，再次细读错误提示信息，原来发现一个重要的问题，如果你是把博客发布到 &lt;code class=&quot;highlighter-rouge&quot;&gt;github-pages&lt;/code&gt; 上时，文件引入地址得这样写：&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;err&quot;&gt;如果你的项目名字为：&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;那么引入地址为：&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xxxx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;
 &lt;span class=&quot;err&quot;&gt;即【你的项目】&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;文件夹&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;文件名&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;注意：如果是将 ` jekyll ` 部署到你个人的域名下（包括域名解析到github-pages）就不需要上面这样的操作，直接上传到github上就可以，所以&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;在博客搭建上是非常容易的。&lt;/p&gt;
+&lt;p&gt;注意：如果是将 &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; 部署到你个人的域名下（包括域名解析到github-pages）就不需要上面这样的操作，直接上传到github上就可以，所以&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt;在博客搭建上是非常容易的。&lt;/p&gt;
 
 &lt;p&gt;建议：最好将整个博客静态页面全部搭建完毕，包括交互代码，在一个较完整的页面完成后再移植到 &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll&lt;/code&gt; 上面，这样更方便你前期不断的调试。当然就目前而言，我的博客就是完成了基本交互和架构后再通过 ` jeykll` 生成，还有就是使用sublime来编写markdown实在不咋样，很容易出错，目前还没有解决方案。只能暂时凑合。&lt;/p&gt;
 

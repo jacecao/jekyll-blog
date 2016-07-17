@@ -17,3 +17,4 @@ github_username:  jacecao
 # Build settings
 markdown: kramdown
 permalink: /:year/:month/:day/:title
+highlighter: pygments

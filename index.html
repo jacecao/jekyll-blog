@@ -9,9 +9,9 @@ layout: default
           <div class="item-message">
               <span class="write-time">编写时间：{{ post.date | date: "%b %-d, %Y" }}</span>
           </div>
-          <div class="item-content">
+          <div class="item-description">
               <p>{{ post.excerpt }}</p>
-              <a href="{{ post.url | prepend: site.baseurl }}" class="item-button">阅读全文<span>&raquo;</span></a>
+              <a href="{{ post.url | prepend: site.baseurl }}" class="item-button desription-a">阅读全文<span>&raquo;</span></a>
           </div>
       </div>
       <div class="item-footer">
