@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "我的博客搭建记录-关于jeykll部署到github时资源获取出错"
+title:  "关于jeykll部署到github时资源获取出错"
 categories: 博客搭建记录
 ---
 

@@ -5,6 +5,14 @@ define(['jquery','tool'],function( $, Tool ){
 
   function renderUI(){
     this.tool = new Tool.Tool();
+    //加入hover显示描述动画
+    this.tool.hover_animate({
+      parent : '.project-message',
+      show : 'h2',
+      hover_show : 'p',
+      type: 'toTop',
+      eventTarget : '.project-content>a'
+    });
     // 加入底部按钮
     this.render_bottom_bar({
       num : 1,

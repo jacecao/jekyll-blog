@@ -9,7 +9,7 @@
 title: HioU - 海鸥
 email: 280749498@qq.com
 description: > # this means to ignore newlines until "baseurl:"
-  海鸥（HioU）的博客，前端开发
+  海鸥（HioU）的博客,前端开发,web,haiouyun
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://haiouyun.com" # the base hostname & protocol for your site
 github_username:  jacecao

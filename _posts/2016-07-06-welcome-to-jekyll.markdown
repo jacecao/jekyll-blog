@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "我的博客搭建记录-搭建jekyll环境"
+title:  "搭建jekyll环境"
 date:   2016-07-04 23:16:33 +0800
 categories: 博客搭建记录
 ---

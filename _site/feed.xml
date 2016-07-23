@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HioU - 海鸥</title>
-    <description>海鸥（HioU）的博客，前端开发
+    <description>海鸥（HioU）的博客,前端开发,web,haiouyun
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Jul 2016 15:14:44 +0800</pubDate>
-    <lastBuildDate>Fri, 22 Jul 2016 15:14:44 +0800</lastBuildDate>
+    <pubDate>Sat, 23 Jul 2016 15:07:22 +0800</pubDate>
+    <lastBuildDate>Sat, 23 Jul 2016 15:07:22 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>我的博客搭建记录-关于jeykll部署到github时资源获取出错</title>
+        <title>关于jeykll部署到github时资源获取出错</title>
         <description>&lt;p&gt;将网页部署到github时，会出现一个问题，就是所有的访问资源链接失效，这个很奇怪，因为在在本地测试时网页资源获取是没有问题的，究竟是哪里的问题呢?&lt;/p&gt;
 
 &lt;p&gt;看了后台返回的提示信息显示的是在某某路径下得不到这个文件，很显然就是获取资源路径出现了问题，一开始以为是文件地址输入错误，检测一次后确定无误，再次细读错误提示信息，原来发现一个重要的问题，如果你是把博客发布到 &lt;code class=&quot;highlighter-rouge&quot;&gt;github-pages&lt;/code&gt; 上时，文件引入地址得这样写：&lt;/p&gt;
@@ -37,7 +37,7 @@
       </item>
     
       <item>
-        <title>我的博客搭建记录-搭建jekyll环境</title>
+        <title>搭建jekyll环境</title>
         <description>&lt;p&gt;3月就想通过&lt;code class=&quot;highlighter-rouge&quot;&gt;Github&lt;/code&gt;来搭建一个自己的博客，但由于一直都在忙于学习，所以就耽搁到现在。我说说我使用的博客系统吧，&lt;code class=&quot;highlighter-rouge&quot;&gt;github&lt;/code&gt;由于只能生成静态页面（没有数据交互），所以就需要借助一个能帮你处理博客内容的框架。&lt;/p&gt;
 
 &lt;p&gt;当然一开始自己也觉得没有必要借助第三方框架，自己全部通过&lt;code class=&quot;highlighter-rouge&quot;&gt;JS&lt;/code&gt;来实现，但在实际操作中会遇到一系列问题，首当其冲的就是你发现需要模板来构建你的页面，因为你不希望被重复的页面架构和文件引用路径被折磨和浪费时间。
