@@ -21,7 +21,7 @@
 {
 	font-size: 0.9em;
 	line-height: 1.7;
-	letter-spacing: 2px;
+	/* letter-spacing: 2px; */
 	text-indent: 2em;
 	word-break: break-all;
 	color: #777575;
@@ -45,23 +45,36 @@
 	-ms-transition: all 0.8s;
 	-moz-transition: all 0.8s;
 }
-
 .item-message
 {
 	margin-top: 8px;
 	color: #B4B4B4;
 }
-.item-content
+.item-content,.item-description
 {
 	margin-top: 20px;
+}
+.item-content p a,.item-description p a
+{
+	color: #1e9fc4;
+	text-decoration: underline;
+}
+/* ************************* 代码高亮部分 ********************* */
+.highlight
+{
+	width: 90%;
+	margin: 10px auto;
+}
+.highlight pre
+{
+	text-align: left;
 }
 .item-blog p
 {
 	width: 90%;
 	margin: 0 auto;
-	text-align: left;
+	text-align: justify;
 	padding: 10px;
-
 }
 
 a.item-button
@@ -148,6 +161,7 @@ a.prev-button:hover span
 	margin: 10px;
 	overflow: hidden;
 	background: #EAEAEA url('../img/project_bg.png');
+	box-shadow: 0 0 8px 2px rgba(90,90,90,0.2);
 
 }
 .project-content a.pro_2
@@ -165,9 +179,24 @@ a.prev-button:hover span
 .project-message
 {
 	position: absolute;
-	background: rgba(100, 100, 100, 0.8);
+	background: rgba(247, 247, 247, 0.8);
 	bottom: 0px;
 	left: 0;
+	transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-webkit-transition: all 0.8s;
+}
+.project-content p
+{
+	text-align: left;
+	margin: 0;
+	width: 260px;
+	color: #3c3c3c;
+	padding: 5px 10px;
+	text-indent: 0;
+	letter-spacing: 2px;
 }
 .project-message h2
 {
@@ -175,25 +204,15 @@ a.prev-button:hover span
 	padding: 5px;
 	width: 270px;
 	height: 30px;
-	color: #CAD7D4;
+	color: #3c3c3c;
 	line-height: 30px;
 	font-size: 1em;
 	letter-spacing: 3px;
 	text-align:center;
 }
-.project-content p
+.project-message p
 {
-	text-align: left;
-	margin: 0;
-	width: 260px;
-	color: #CAD7D4;
-	padding: 5px 10px;
-	text-indent: 0;
-	transition: all 0.8s;
-	-o-transition: all 0.8s;
-	-ms-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-webkit-transition: all 0.8s;
+	display: none;
 }
 .project-content a:hover
 {
@@ -210,26 +229,22 @@ a.prev-button:hover span
 	right: 0;
 	width: 300px;
 	background: #eee;
-<<<<<<< HEAD
 	border-left: 1px solid #d4d4d4;
 	transform: translate3d(300px, 0, 0);
-=======
->>>>>>> origin/master
 	-o-transform: translate3d(300px, 0, 0);
 	-ms-transform: translate3d(300px, 0, 0);
 	-moz-transform: translate3d(300px, 0, 0);
 	-webkit-transform: translate3d(300px, 0, 0);
-<<<<<<< HEAD
 	transition: all 0.7s;
 	-o-transition: all 0.7s;
 	-ms-transition: all 0.7s;
 	-moz-transition: all 0.7s;
 	-webkit-transition: all 0.7s;
+	z-index: 1000;
 }
 .side-bar-active
 {
 	transform: translate3d(0, 0, 0);
-=======
 	transition: all 1s;
 	-o-transition: all 1s;
 	-ms-transition: all 1s;
@@ -238,12 +253,11 @@ a.prev-button:hover span
 }
 .side-bar-active
 {
->>>>>>> origin/master
+	transform: translate3d(0, 0, 0);
 	-o-transform: translate3d(0, 0, 0);
 	-ms-transform: translate3d(0, 0, 0);
 	-moz-transform: translate3d(0, 0, 0);
 	-webkit-transform: translate3d(0, 0, 0);
-<<<<<<< HEAD
 }
 .side-box
 {
@@ -278,6 +292,10 @@ a.prev-button:hover span
 	text-align: left;
 	font-size: 0.8em;
 	cursor: pointer;
+}
+.blog-tag:hover
+{
+	color: #00c7ff;
 }
 /* 小三角形triangle */
 .triangle
@@ -367,6 +385,134 @@ a.prev-button:hover span
 	background: #eee;
 	color: #8c8c8c;
 	z-index: 100;
-=======
->>>>>>> origin/master
+}
+/* ***************************** about *************************** */
+.show-page
+{
+	margin: 40px auto;
+}
+.show-page a
+{
+	text-decoration: underline;
+	color: #c1b4b4;
+}
+.show-page a:hover
+{
+	color: #000;
+}
+.show-ul
+{
+	width: 90%;
+	margin: 20px auto;
+}
+.photo-box,.show-header
+{
+	width: 170px;
+	margin: 20px auto;
+	border: 10px solid #fff;
+	overflow: hidden;
+	box-shadow: 0 0 3px 3px rgba(0,0,0,0.06);
+}
+
+.show-ul>li
+{
+	width: 100%;
+	margin: 20px auto;
+}
+.show-ul>li::after
+{
+	content: '';
+	display: block;
+	width: 40%;
+	max-width: 300px;
+	margin: 60px auto;
+	border-bottom: 1px solid #cdcdcd;
+}.show-ul>li:last-child::after
+{
+	border: none;
+}
+.photo-box
+{
+	height: 170px;
+	border-radius: 100px;
+	box-shadow: 0 0 3px 3px rgba(0,0,0,0.06),inset 0 0 3px 3px rgba(0,0,0,0.3);
+	background: #000 url('../img/me.jpg') no-repeat center center;
+}
+.show-ul span
+{
+	display: block;
+	font-size: 0.8em;
+	letter-spacing: 2px;
+}
+span.show-h3
+{
+	font-size: 1em;
+}
+.show-pre
+{
+	width: 90%;
+	max-width: 500px;
+	margin: 20px auto;
+	padding: 10px;
+	background-color: #80cee4;
+	border-radius: 10px;
+	text-align: justify;
+	box-shadow: 0 0 2px 2px #a7dbef;
+}
+.show-header
+{
+	height: 60px;
+	border-radius: 10px;
+	background: #fff;
+}
+.project-decration
+{
+	width: 90%;
+	max-width: 600px;
+	margin: 40px auto;
+	padding-bottom: 20px;
+	background: #fff;
+	box-shadow: 0 0 4px 4px rgba(0,0,0,0.08);
+
+}
+.project-decration h4
+{
+	padding: 10px;
+	background: #eee;
+	letter-spacing: 4px;
+	/* text-shadow: 1px 1px #8aa1a6; */
+	color: #ccc;
+}
+.show-ul li h3
+{
+	letter-spacing: 4px;
+	color: #ccc;
+}
+.project-decration dl
+{
+	text-align: left;
+	padding: 10px;
+	margin: 0;
+}
+.project-decration dt
+{
+	border-bottom: 1px solid #eee;
+}
+.project-decration dd,.project-decration dt
+{
+	margin: 0 auto;
+	width: 80%;
+}
+.project-decration span
+{
+	display: inline;
+}
+.show-ul .project-decration ol
+{
+	padding-left: 15px;
+}
+.show-ul .project-decration p
+{
+	text-indent: 0;
+	letter-spacing: 2px;
 }

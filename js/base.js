@@ -53,7 +53,7 @@ define(['jquery','renderUI'],function($,renderUI){
       var _menu_a = $('.mobile-nav li a');
 
       var mobile_hander = function(){
-        // 兼容手机横屏状态时，无法启动resize事件
+        // 兼容手机横屏状态时，无法启动resize事件,如果使用的是zepto工具库就不需要兼容这些了
         $('.mobile-nav').css('left', ( $(window).width() - $('.mobile-nav').width() )/2);
         // 再执行动画
         _this.show_nav_bar();
@@ -110,48 +110,65 @@ define(['jquery','renderUI'],function($,renderUI){
         start_time : null,
         end_time : null,
         start_x : null,
-        end_x : null
+        end_x : null,
+        open : false,
+        do : false
       };
-      $('body').bind( 'touchstart' , function(){
+      $(window).bind( 'touchstart' , function(){
         // event.preventDefault();
         opt.start_time = new Date() * 1;//转化为数字
         opt.start_x = event.touches[0].pageX;
       });
-      $('body').bind( 'touchmove' , function(){
+      $(window).bind( 'touchmove' , function(){
         opt.end_x = Math.floor(event.touches[0].pageX - opt.start_x );
-        if( opt.end_x < 0 && opt.end_x > -200 )
+        if( opt.end_x < -10 && opt.end_x > -300 )
         {
           $('.local').fadeIn();
-          $('.side-bar').css( 'transform' , 'translate3d('+ (-opt.end_x) +'px, 0, 0)');
+          $('.side-bar').css( 'transform' , 'translate3d('+ (300+opt.end_x) +'px, 0, 0)');
+          opt.do = true;
         }
       });
-      $('body').bind( 'touchend' , function(){
+      $(window).bind( 'touchend' , function(){
         // event.preventDefault();
         opt.end_time = new Date() * 1;
         var _time = opt.end_time - opt.start_time;
-        if( _time >= 500 && opt.end_x <= -100){
-          $('.side-bar').css( 'transform' , 'translate3d(0, 0, 0)');
-        }else if( opt.end_x >= 50 || _time <= 500 ){
-          $('.local').fadeOut('fast');
-          $('.side-bar').css( 'transform' , 'translate3d(300px, 0, 0)');
-        }
+        
+        if( !opt.open && opt.do ){//当opt.open为真是表示侧边栏已经打开，不再执行这里的函数，否则就会有BUG
+          
+          if( _time >= 500 || opt.end_x <= -100){
+            $('.local').fadeIn();
+            $('.side-bar').css( 'transform' , 'translate3d(0, 0, 0)');
+            opt.open = true;
+          }else if( opt.end_x >= 90 || _time <= 500 ){
+            $('.side-bar').css( 'transform' , 'translate3d(300px, 0, 0)');
+            opt.do = false;
+          }
+
+        }  
+
       });
       $(window).bind('touchend',function(){
         if( event.target.className === 'local' )
         {
           $('.local').fadeOut('fast');
           $('.side-bar').css( 'transform' , 'translate3d(300px, 0, 0)');
+          opt.open = false;
+          opt.do = false;
         }
       });
     },
-    //伸缩标题列表
+    //开关标题列表
     li_title : function(){
       var render = this.render;
       $('.blog-tag').click( function(){
-        var _this = $(this);
-        $(this).find('.tag-list').toggle('normal' ,function(){
-          render.check_tag_list( $(this) , _this );
-        });
+        if( event.target.className === 'blog-tag' ){
+          var _this = $(this);
+          if( $(this).find('.tag-list').length != 0 ){
+            $(this).find('.tag-list').toggle('normal' ,function(){
+              render.check_tag_list( $(this) , _this );
+            });
+          }
+        } 
       });
     }
   };

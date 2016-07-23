@@ -6,10 +6,10 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: 海鸥-HioU
+title: HioU - 海鸥
 email: 280749498@qq.com
 description: > # this means to ignore newlines until "baseurl:"
-  海鸥（HioU）的博客，前端开发.
+  海鸥（HioU）的博客,前端开发,web,haiouyun
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://haiouyun.com" # the base hostname & protocol for your site
 github_username:  jacecao
@@ -17,3 +17,4 @@ github_username:  jacecao
 # Build settings
 markdown: kramdown
 permalink: /:year/:month/:day/:title
+port: 5000
