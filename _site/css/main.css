@@ -436,7 +436,7 @@ a.prev-button:hover span
 	height: 170px;
 	border-radius: 100px;
 	box-shadow: 0 0 3px 3px rgba(0,0,0,0.06),inset 0 0 3px 3px rgba(0,0,0,0.3);
-	background: #000 url('../img/me.jpg') no-repeat center center;
+	background: #98d8ea url('../img/me.jpg') no-repeat center center;
 }
 .show-ul span
 {
