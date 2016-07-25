@@ -134,7 +134,7 @@ define(['jquery','renderUI'],function($,renderUI){
         
         if( !opt.open && opt.do ){//当opt.open为真是表示侧边栏已经打开，不再执行这里的函数，否则就会有BUG
           
-          if( _time >= 1000 && opt.end_x <= -120){
+          if( _time >= 600 && opt.end_x <= -50){
             $('.local').fadeIn();
             $('.side-bar').css( 'transform' , 'translate3d(0, 0, 0)');
             opt.open = true;
