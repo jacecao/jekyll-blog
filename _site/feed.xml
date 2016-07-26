@@ -6,9 +6,68 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 25 Jul 2016 17:54:56 +0800</pubDate>
-    <lastBuildDate>Mon, 25 Jul 2016 17:54:56 +0800</lastBuildDate>
+    <pubDate>Tue, 26 Jul 2016 19:21:11 +0800</pubDate>
+    <lastBuildDate>Tue, 26 Jul 2016 19:21:11 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>React-router路由模块中的browerHistory</title>
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;browserHistory&lt;/code&gt; 中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;History&lt;/code&gt; 也就是历史，做啥的呢？&lt;/p&gt;
+
+&lt;p&gt;这得要知道HTML5中的History API 接口这一部分。&lt;/p&gt;
+
+&lt;p&gt;HTML5 history API 包括2个方法、1个时间：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pushState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;replaceState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;onpopstate&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;history.pushState()&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;history.pushState(stateObject, title, url)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;	&lt;span class=&quot;n&quot;&gt;stateObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;状态对象，可以理解为组装网页路径的的一些属性&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;：&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;标题，字符串，可以为空，&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;当前路径显示，字符串。仅同源下有效。&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;该函数执行后有3个变化：&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;1.网站的地址变为参数中url地址&lt;/p&gt;
+
+&lt;p&gt;2.将新生成一条历史记录，可用浏览器的“后退”和“前进”来导航&lt;/p&gt;
+
+&lt;p&gt;3.该函数将返回一个数字，我猜测应该网页驻留时间值，目前还未找到可信赖的依据。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;history.pushState&lt;/code&gt; 接口是可以自由操作浏览器 URL 的，这个也就是 react-router 可以工作的底层机制保障。&lt;/p&gt;
+
+&lt;p&gt;browserHistory 就是 React Router 对 History API 进行的封装。更多说明可以参考官方文档 &lt;a href=&quot;https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md&quot;&gt;Histories&lt;/a&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;history.replaceState()&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这个就是字面意思啦，作用就是替换掉当前记录，用法和pushState()基本相同，但不会生成新的历史纪录。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;window.onpopstate&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;这是在页面发生前进或后退时触发的事件，而调用上面两个函数是不是触发该事件的。
+具体技术参考该文档，&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onpopstate&quot;&gt;window.onpopstate&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;关于HTML5中的history的api,&lt;a href=&quot;https://segmentfault.com/a/1190000002447556&quot;&gt;了解更多&lt;/a&gt;。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 26 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/07/26/meteor-react</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/07/26/meteor-react</guid>
+        
+        
+        <category>React</category>
+        
+      </item>
     
       <item>
         <title>跟着时代的步伐加入React</title>
@@ -113,8 +172,8 @@
 目前我的博客已经完成基本的开发工作，主要是手机端调试，手机端触摸事件还有些BUG。&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Jul 2016 00:00:00 +0800</pubDate>
-        <link>http://haiouyun.com/2016/07/22/blog-node</link>
-        <guid isPermaLink="true">http://haiouyun.com/2016/07/22/blog-node</guid>
+        <link>http://haiouyun.com/2016/07/22/blog-mode</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/07/22/blog-mode</guid>
         
         
         <category>博客搭建记录</category>
