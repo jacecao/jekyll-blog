@@ -60,13 +60,13 @@ define(['jquery','renderUI'],function($,renderUI){
       };
 
       var pc_hander = function(){
-        if( $('body').hasClass('padding') )
+        if( $('html').hasClass('padding') )
         {
-          $('body').removeClass('padding');
+          $('html').removeClass('padding');
           $('.side-bar').removeClass('side-bar-active');
           $(this).html('&#xe9ba;');
         }else{
-          $('body').addClass('padding');
+          $('html').addClass('padding');
           $('.side-bar').addClass('side-bar-active');
           $(this).html('&#xea0f;');
         }
