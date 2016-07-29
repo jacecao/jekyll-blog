@@ -60,13 +60,13 @@ define(['jquery','renderUI'],function($,renderUI){
       };
 
       var pc_hander = function(){
-        if( $('body').hasClass('padding') )
+        if( $('html').hasClass('padding') )
         {
-          $('body').removeClass('padding');
+          $('html').removeClass('padding');
           $('.side-bar').removeClass('side-bar-active');
           $(this).html('&#xe9ba;');
         }else{
-          $('body').addClass('padding');
+          $('html').addClass('padding');
           $('.side-bar').addClass('side-bar-active');
           $(this).html('&#xea0f;');
         }
@@ -123,7 +123,6 @@ define(['jquery','renderUI'],function($,renderUI){
         opt.end_x = Math.floor(event.touches[0].pageX - opt.start_x );
         if( opt.end_x < -10 && opt.end_x > -300 )
         {
-          $('.local').fadeIn();
           $('.side-bar').css( 'transform' , 'translate3d('+ (300+opt.end_x) +'px, 0, 0)');
           opt.do = true;
         }
@@ -135,11 +134,14 @@ define(['jquery','renderUI'],function($,renderUI){
         
         if( !opt.open && opt.do ){//当opt.open为真是表示侧边栏已经打开，不再执行这里的函数，否则就会有BUG
           
-          if( _time >= 500 || opt.end_x <= -100){
+          if( _time >= 600 && opt.end_x <= -50){
             $('.local').fadeIn();
             $('.side-bar').css( 'transform' , 'translate3d(0, 0, 0)');
             opt.open = true;
-          }else if( opt.end_x >= 90 || _time <= 500 ){
+          }else if( opt.end_x >= 100 || _time <= 500 ){
+            $('.side-bar').css( 'transform' , 'translate3d(300px, 0, 0)');
+            opt.do = false;
+          }else{
             $('.side-bar').css( 'transform' , 'translate3d(300px, 0, 0)');
             opt.do = false;
           }
@@ -148,7 +150,7 @@ define(['jquery','renderUI'],function($,renderUI){
 
       });
       $(window).bind('touchend',function(){
-        if( event.target.className === 'local' )
+        if( event.target.className === 'local' && opt.open )
         {
           $('.local').fadeOut('fast');
           $('.side-bar').css( 'transform' , 'translate3d(300px, 0, 0)');

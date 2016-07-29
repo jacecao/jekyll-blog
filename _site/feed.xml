@@ -6,9 +6,172 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 23 Jul 2016 15:07:22 +0800</pubDate>
-    <lastBuildDate>Sat, 23 Jul 2016 15:07:22 +0800</lastBuildDate>
+    <pubDate>Fri, 29 Jul 2016 09:13:31 +0800</pubDate>
+    <lastBuildDate>Fri, 29 Jul 2016 09:13:31 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>React-router路由模块中的browerHistory</title>
+        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;browserHistory&lt;/code&gt; 中的 &lt;code class=&quot;highlighter-rouge&quot;&gt;History&lt;/code&gt; 也就是历史，做啥的呢？&lt;/p&gt;
+
+&lt;p&gt;这得要知道HTML5中的History API 接口这一部分。&lt;/p&gt;
+
+&lt;p&gt;HTML5 history API 包括2个方法、1个事件：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pushState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;replaceState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;onpopstate&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;strong&gt;history.pushState()&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;history&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pushState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stateObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;n&quot;&gt;stateObject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;状态对象，可以理解为组装网页路径的的一些属性&lt;/span&gt;  
+&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;：&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;标题，字符串，可以为空&lt;/span&gt;  
+&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;当前路径显示，字符串。仅同源下有效&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;该函数执行后有3个变化：&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;1.网站的地址变为参数中url地址&lt;/p&gt;
+
+&lt;p&gt;2.将新生成一条历史记录，可用浏览器的“后退”和“前进”来导航&lt;/p&gt;
+
+&lt;p&gt;3.该函数将返回一个数字，我猜测应该网页驻留时间值，目前还未找到可信赖的依据。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;history.pushState&lt;/code&gt; 接口是可以自由操作浏览器 URL 的，这个也就是 react-router 可以工作的底层机制保障。&lt;/p&gt;
+
+&lt;p&gt;browserHistory 就是 React Router 对 History API 进行的封装。更多说明可以参考官方文档 &lt;a href=&quot;https://github.com/reactjs/react-router/blob/master/docs/guides/Histories.md&quot;&gt;Histories&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;history.replaceState()&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这个就是字面意思啦，作用就是替换掉当前记录，用法和pushState()基本相同，但不会生成新的历史纪录。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;window.onpopstate&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这是在页面发生前进或后退时触发的事件，而调用上面两个函数是不是触发该事件的。
+具体技术参考该文档，&lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onpopstate&quot;&gt;window.onpopstate&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;关于HTML5中的history的api,&lt;a href=&quot;https://segmentfault.com/a/1190000002447556&quot;&gt;了解更多&lt;/a&gt;。&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 26 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/07/26/meteor-react</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/07/26/meteor-react</guid>
+        
+        
+        <category>React</category>
+        
+      </item>
+    
+      <item>
+        <title>跟着时代的步伐加入React</title>
+        <description>&lt;p&gt;为什么我要选择React作为我的第一个框架呢？其实真正的原因只有一个容易上手啦，不像Angular那样学习线路陡峭，而且目前国内的React发展也是相当迅速，后来有居上之势。&lt;/p&gt;
+
+&lt;p&gt;另外为了增强用户体验，SPA（single page web application,单页面开发）也是相当的火热，而如今react短小精干的架势个人觉得完全符合SPA开发，当然看各位大神对React的见解，要让React能在SPA中游刃有余还需要一个搞定前后端的伴侣，这里我依照先人们的足迹，选择的meteor。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;meteor是基于node的开发框架&lt;/code&gt;，关键数据的实时交互这点和SPA的要求是完全符合，SPA要的就是无刷新数据交互嘛。&lt;/p&gt;
+
+&lt;p&gt;今天就先说一下如何安装meteor吧，MAC安装这个就很容易了，windows要麻烦一点，我说一下windows吧。 进入&lt;a href=&quot;https://www.meteor.com/install&quot;&gt;下载页面&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;选择windows下载安装即可，这个下载速度嘛当然是有点虐心的，大家可以在下载阶段干点别的啥，&lt;/p&gt;
+
+&lt;p&gt;安装完成后，我们来生成一个项目页面，进入后台CMD&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;指定一个你需要创建的文件夹路径&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;meteor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xxxxx&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;项目名字&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;完成后等文件加载完毕，该项目就建立好了，然后进入该项目&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xxxxx&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;meteor&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;这里就跟操作Jekylls server命令是一样的，会告诉你一个页面在本地服务器已经启动了，你可以打开看看一般是http://localhost:3000/&lt;/p&gt;
+
+&lt;p&gt;接着我们就需要你准备好Node.js，将通过npm来安装react。&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 24 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/07/24/meteor-react</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/07/24/meteor-react</guid>
+        
+        
+        <category>React</category>
+        
+      </item>
+    
+      <item>
+        <title>本站常用模块介绍</title>
+        <description>&lt;p&gt;主要介绍本博客页面中几个常用的组件使用，这里做一个简要记录也是备忘，另外也是方便后面代码阅读，暂且算是一个API介绍吧。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意都需要依赖jQuery库实现&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;滚动条动画 scroll_animate()&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;该组件主要是实现滚动条动画，主要用在页面导航和返回顶部按钮等这样类似的操作。参数说明：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;scroll_animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;目标值&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;必须&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;毫米值&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;step&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;，&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/步长
+	type : string 
+	/&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;运动的速度&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;normal&#39;&#39;slow&#39;&#39;fast&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;em&gt;鼠标移入移出标题动画显示 hover_animate()&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;该组件主要是实现鼠标移入和移出时动画显示，主要用在图片列表中的描述显示隐藏。参数说明：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;hover_animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;选择器，包含动画元素的父级元素&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;必须&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;eventTarget&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;动画触发元素&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;：&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;selector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;需要一直显示的元素&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;动画时长&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;运动方向&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;toTop&#39;&#39;toBottom&#39;&#39;toLeft&#39;&#39;toRight&#39;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;默认是&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;toTop&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;该组件用于我的项目展示页面中，当鼠标移入时显示项目具体描述，移出就隐藏描述，其动画底层是由CSS3实现，有助于浏览器的页面渲染。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;底部菜单按钮模块 render_bottom _bar()&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;主要用于按实际要求渲染底部按钮，该模块默认会生成一个底部按钮，即不输入任何参数便会生成一个底部按钮。参数说明：&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;render_bottom&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;需要生成菜单的数量&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;菜单添加类名可以是单个也可以是个数组，当&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;为数组时&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;如果数组小于菜单数量，那么以最后一个&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;分配到多于的菜单数量&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;如果数组大于菜单数量，那么多出来的&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;无效，不会加入&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;
+	&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;生成菜单中的&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;内容，与&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;处理方式一样&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;为了使页面流畅建议该模块一次性注入,代码结构原理生成节点后加入CSS样式最后一次性注入到body中，加速页面的渲染。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;页面导航数据的注入 updata_side _bar()&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;主要是根据一个标准布局来实现自动生成侧边栏的导航类容。参数说明：&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;这里说的标准布局是指，页面类容是明显的分成A\B\C\D结构，同时拥有相同的类名，即使用了一套CSS样式来布局，其次每个小节中有一个标题标签，本博客中使用的H3标签作为标准，每个小节为一个LI标签，同时li标签都有包含一个相同的class&lt;/code&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;updata_side&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_bar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;targetEle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;targetEle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;表示要获取数据的目标，这里是指包含所有小节的父元素&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;侧边栏的标题（&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;页面导航栏、&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;清单）&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;说完啦！
+目前我的博客已经完成基本的开发工作，主要是手机端调试，手机端触摸事件还有些BUG。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 22 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/07/22/blog-mode</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/07/22/blog-mode</guid>
+        
+        
+        <category>博客搭建记录</category>
+        
+      </item>
     
       <item>
         <title>关于jeykll部署到github时资源获取出错</title>

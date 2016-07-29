@@ -1,5 +1,13 @@
 
 /******************** 全局部分 *************************/
+html{ 
+	background: #f7f7f7;
+	transition: all 0.7s;
+	-webkit-transition: all 0.7s;
+	-o-transition: all 0.7s;
+	-ms-transition: all 0.7s;
+	-moz-transition: all 0.7s;
+}
 body,html,ul
 {
 	padding: 0;
@@ -7,13 +15,13 @@ body,html,ul
 }
 body
 {
-	transition: all 0.7s;
-	-webkit-transition: all 0.7s;
-	-o-transition: all 0.7s;
-	-ms-transition: all 0.7s;
-	-moz-transition: all 0.7s;
+	background: #f4f4f4;
 }
-body.padding
+.content
+{
+	background: #f9f9f9;
+}
+.padding
 {
 	padding-right: 300px;
 }
@@ -23,7 +31,6 @@ body
 {
 	font-family: -apple-system-font,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
 	font-size: 16px;
-	background: #fafafa;
 }
 .clearfix::after
 {
@@ -52,6 +59,7 @@ body
 	{
 		width: 900px;
 		margin: 0 auto;
+		box-shadow: 0 0 6px 6px rgba(159, 239, 229, 0.4);
 	}
 	.auto-width
 	{
@@ -147,7 +155,7 @@ body
 	/******************** content *****************/
 	#blog-list
 	{
-		margin: 80px auto;
+		margin: 0 auto;
 	}
 	.content-box
 	{
@@ -155,7 +163,7 @@ body
 	}
 	.item-content p
 	{
-		letter-spacing: 4px;
+		letter-spacing: 2px;
 	}
 	.item-description p
 	{
@@ -261,7 +269,7 @@ body
 	/******************** content *****************/
 	#blog-list
 	{
-		margin: 40px auto;
+		margin: 0 auto;
 	}
 	.content .item-blog p
 	{
@@ -316,6 +324,7 @@ body
 {
 	text-align: center;
 	overflow: hidden;
+	padding-bottom: 30px;
 }
 span.border
 {
@@ -365,7 +374,8 @@ span.border
 .content
 {
 	text-align: center;
-	margin: 20px auto;
+	margin: 0px auto;
+	padding: 40px 0 20px 0;
 }
 #blog-list
 {

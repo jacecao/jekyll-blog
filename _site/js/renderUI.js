@@ -40,7 +40,7 @@ define(['jquery','tool'],function( $, Tool ){
   renderUI.prototype = {
     
     render_bottom_bar : function( obj ){
-      //obj{ 创建数量num ，类名class（单个或数组） }
+      //obj{ 创建数量num ，类名class（单个或数组），标签类容html与class一样 }
       var _html = '';
       var _li = '';
       if( typeof obj.html == 'undefined' ){

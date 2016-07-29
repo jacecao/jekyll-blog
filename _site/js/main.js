@@ -1,7 +1,8 @@
 require.config({
     paths : {
       "jquery" : "jquery.min"
-    }   
+    },
+    waitSeconds : 0
 });
 require(['jquery','base'],function($,Base){
   
