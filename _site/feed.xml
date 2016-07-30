@@ -6,17 +6,17 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 30 Jul 2016 13:38:14 +0800</pubDate>
-    <lastBuildDate>Sat, 30 Jul 2016 13:38:14 +0800</lastBuildDate>
+    <pubDate>Sat, 30 Jul 2016 13:52:58 +0800</pubDate>
+    <lastBuildDate>Sat, 30 Jul 2016 13:52:58 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
         <title>React之我见</title>
         <description>&lt;p&gt;学习了React一周，深深的被它的设计思路所折服，原来有人说自从使用了React后就很难再使用jQuery,事实确实如此。&lt;/p&gt;
 
-&lt;p&gt;也明白为什么大家会说React算是一个View框架，其组件化的开发思路真的很棒，最关键是在UI与数据的结合方面，个人觉得做的非常彻底，而且组件的开发简约而不简单，高度的可重复使用性是复合前端开发的潮流。&lt;/p&gt;
+&lt;p&gt;也明白为什么大家会说React算是一个View框架，其组件化的开发思路真的很棒，最关键是在UI与数据的结合方面，个人觉得做的非常彻底，而且组件的开发简约而不简单，高度的可重复使用性是符合前端开发的潮流。&lt;/p&gt;
 
-&lt;p&gt;我觉得有些前辈说的对，那就是样式和结构不应该分开来，而应该在组件中就应该装配好，这样更利于管理，尤其是inline-style模块就是朝着这方面发展，该模块的思路放弃样式表，用JS逻辑来解决一切样式，即将控制与样式一一对应，我也赞同这会是将来组件开发的趋势。或许以后将很难再见复杂的CSS文件。&lt;/p&gt;
+&lt;p&gt;我觉得有些前辈说的对，那就是样式和结构不应该分开来，在组件中就应该装配好，这样更利于管理，尤其是inline-style模块就是朝着这方面发展，该模块的思路放弃样式表，用JS逻辑来解决一切样式，将控制与样式一一对应，我也赞同这会是将来组件开发的趋势。或许以后将很难再见复杂的CSS文件。&lt;/p&gt;
 
 &lt;p&gt;React的虚拟DOM渲染机制也是目前框架中，我觉得很有效解决浏览器性能的一种处理方式，而且React实现了一个完备的虚拟事件系统，这个在未来发展中是一件很有意义的事情，至少能够统一开发标准，不再需要额外兼容机制。&lt;/p&gt;
 
@@ -26,7 +26,7 @@
 
 &lt;p&gt;只是目前React就像一块主板，这台电脑究竟性能怎么样，还得看其他模块的支持度，当然随着React的发展，相信会有一个比较成熟的模块配置系统，目前meteor就是一个很好的列子嘛，而且在UI方面material design我还是非常看好的，这个标准会使得开发有一定的统一性和高效性，而且也符合React的开发思路，目前很多移动应用都在朝着个方向努力。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002447556&quot;&gt;关于React的中文文档&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://reactjs.cn/react/docs/getting-started.html&quot;&gt;关于React的中文文档&lt;/a&gt;。&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 30 Jul 2016 00:00:00 +0800</pubDate>
