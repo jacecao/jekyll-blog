@@ -85,8 +85,8 @@ a.item-button
 	line-height: 30px;
 	margin: 30px auto 10px auto;
 	border-radius: 5px;
-	border: 1px solid #1E9FC4;
-	background: #1E9FC4;
+	border: 1px solid #1ec4be;
+	background: #1ec4be;
 	color: #fff;
 	font-size: 0.8em;
 	letter-spacing: 2px;
@@ -228,7 +228,7 @@ a.prev-button:hover span
 	bottom: 0;
 	right: 0;
 	width: 300px;
-	background: #eee;
+	background: #535d5f;
 	border-left: 1px solid #d4d4d4;
 	transform: translate3d(300px, 0, 0);
 	-o-transform: translate3d(300px, 0, 0);
@@ -274,7 +274,7 @@ a.prev-button:hover span
 /* 	margin: 20px auto 0 auto; */
 	text-align: center;
 	font-size: 1.2em;
-	color:  #1E9FC4;
+	color:  #1ec4be;
 }
 .list h3
 {
