@@ -1,7 +1,7 @@
 
 /******************** 全局部分 *************************/
 html{ 
-	background: #ecebeb;
+	background: #fbfbfb;
 	transition: all 0.7s;
 	-webkit-transition: all 0.7s;
 	-o-transition: all 0.7s;
@@ -15,7 +15,7 @@ body,html,ul
 }
 body
 {
-	background: #f4f4f4;
+	background: #efefef;
 }
 .content
 {
@@ -71,32 +71,33 @@ body
 		position: relative;
 		height: 149px;
 		overflow: hidden;
+		padding-top: 30px;
 	}
 	.header-logo
 	{
 		display: block;
-		height: 75px;
+		height: 97px;
 		text-align: center;
-		margin: 45px auto auto 0;
+		margin: 0 auto;
 	}
 
 	.header-nav
 	{
 		/* position: absolute; */
-		width: 210px;
+		width: 207px;
 		height: 20px;
 		/* left: 20px; */
 		/* bottom: -5px; */
-		margin: 13px auto 0 auto;
+		margin:0 auto;
 		text-align: center;
-		transform: translateY(-5px);
-		animation: navw 1.5s;
+		transform: translate3d(2px,14px,0);
+		/* animation: navw 1.5s; */
 	}
-	@keyframes navw
+/* 	@keyframes navw
 	{
-		from { transform: translateY(10px);}
-		to { transform: translateY(-5px);}
-	}
+		from { transform: translateY(24px);}
+		to { transform: translateY(14px);}
+	} */
 	.header-nav li
 	{
 		float: left;
@@ -132,7 +133,7 @@ body
 	{
 		display: block;
 		width:inherit;
-		border-bottom: 1px solid #a1a1a1;
+		border-bottom: 1px solid #1ec4be;
 		transform: scaleX(0);
 		-o-transform: scaleX(0);
 		-moz-transform: scaleX(0);
@@ -347,7 +348,7 @@ span.border
 {
 	display: block;
 	letter-spacing: 1px;
-	color: #D8D8D8;
+	color: #ccc;
 	text-align: center;
 	transition: all 1s;
 	-o-transition: all 1s;
@@ -358,18 +359,7 @@ span.border
 }
 .header-nav li a:hover, .mobile-nav li a:hover,.header-nav li a.active ,.mobile-nav li a.active
 {
-	color: #a1a1a1;
-/* 	background-image: gradient(linear, 0 0, 0 bottom, from(rgba(29, 152, 187, 1)), to(rgba(23, 239, 213, 1)));
-	background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(29, 152, 187, 1)), to(rgba(23, 239, 213, 1)));
-	background-image: -o-gradient(linear, 0 0, 0 bottom, from(rgba(29, 152, 187, 1)), to(rgba(23, 239, 213, 1)));
-	background-image: -moz-gradient(linear, 0 0, 0 bottom, from(rgba(29, 152, 187, 1)), to(rgba(23, 239, 213, 1)));
-	background-image: -ms-gradient(linear, 0 0, 0 bottom, from(rgba(29, 152, 187, 1)), to(rgba(23, 239, 213, 1)));
-	background-clip: text;
-	-webkit-background-clip: text;
-	-o-background-clip: text;
-	-moz-background-clip: text;
-	-ms-background-clip: text;
-	-webkit-text-fill-color: transparent; */
+	color: #2d2d2d;
 }
 .content
 {
@@ -438,7 +428,7 @@ span.border
 	margin-bottom: 5px;
 	font-family: 'icomoon';
 	opacity: 0.7;
-	background: #1e9fc4;
+	background: #1ec4be;
 	border-radius: 5px;
 	color: #d7d3d3;
 	font-size: 1.6em;
