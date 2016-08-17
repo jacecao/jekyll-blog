@@ -6,9 +6,36 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 30 Jul 2016 13:58:03 +0800</pubDate>
-    <lastBuildDate>Sat, 30 Jul 2016 13:58:03 +0800</lastBuildDate>
+    <pubDate>Wed, 17 Aug 2016 16:45:29 +0800</pubDate>
+    <lastBuildDate>Wed, 17 Aug 2016 16:45:29 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>基于meteor和react构建的在线聊天应用</title>
+        <description>&lt;p&gt;这是一个单页面应用，整个UI完全由MaterialUI框架完成，在开发过程中不得不说MaterialUI是一个非常棒Material-design框架，能够比较快速的构建你的应用界面。&lt;/p&gt;
+
+&lt;p&gt;当然这款应用还涉及一些其他必要的插件，尤其是实现响应布局必要的radium插件。&lt;/p&gt;
+
+&lt;p&gt;直接看效果吧（加载比较缓慢）&lt;/p&gt;
+
+&lt;p&gt;PC端效果&lt;br /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/meteor-react-1.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;移动端效果&lt;br /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/meteor-react-2.gif&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;该项目非常适合刚接触React的朋友，另外本应用大部分代码采用ES6的书写方式，对于需要注意的地方有注释&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/jacecao/meteor-react&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 15 Aug 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/08/15/react-spa</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/08/15/react-spa</guid>
+        
+        
+        <category>React</category>
+        
+      </item>
     
       <item>
         <title>React之我见</title>

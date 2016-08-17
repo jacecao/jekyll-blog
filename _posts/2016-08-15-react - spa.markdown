@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "基于meteor和react构建的在线聊天应用"
+categories: React
+---
+
+这是一个单页面应用，整个UI完全由MaterialUI框架完成，在开发过程中不得不说MaterialUI是一个非常棒Material-design框架，能够比较快速的构建你的应用界面。
+
+当然这款应用还涉及一些其他必要的插件，尤其是实现响应布局必要的radium插件。
+
+直接看效果吧（加载比较缓慢）
+
+PC端效果  
+![image](https://raw.githubusercontent.com/jacecao/gif-img/master/meteor-react-1.gif)  
+
+移动端效果  
+![image](https://raw.githubusercontent.com/jacecao/gif-img/master/meteor-react-2.gif)  
+
+该项目非常适合刚接触React的朋友，另外本应用大部分代码采用ES6的书写方式，对于需要注意的地方有注释
+
+[项目地址](https://github.com/jacecao/meteor-react)
