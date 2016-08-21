@@ -176,6 +176,10 @@ a.prev-button:hover span
 {
 	background-position: 0 181px;
 }
+.project-content a.pro_5
+{
+	background: #EAEAEA url('../img/project_bg2.PNG');
+}
 .project-message
 {
 	position: absolute;
