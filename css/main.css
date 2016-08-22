@@ -520,3 +520,8 @@ span.show-h3
 	text-indent: 0;
 	letter-spacing: 2px;
 }
+/* code */
+.highlighter-rouge
+{
+	text-align: left;
+}

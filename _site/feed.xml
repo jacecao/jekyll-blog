@@ -6,9 +6,147 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 22 Aug 2016 16:11:19 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Aug 2016 16:11:19 +0800</lastBuildDate>
+    <pubDate>Tue, 23 Aug 2016 00:13:21 +0800</pubDate>
+    <lastBuildDate>Tue, 23 Aug 2016 00:13:21 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>ES6中新增的基本变量声明和解构赋值 — (1)</title>
+        <description>&lt;p&gt;最近一直在看阮一峰老师的《ES6标准入门》,在黄希彤前辈写的推荐序里，让我感受到作为W3C顾问代表对一个语言标准的前瞻性和对开发人员在实际开发中敢对标准提出异议的鼓励，我想这也是阮一峰前辈写这本书的更深一层意义。&lt;/p&gt;
+
+&lt;p&gt;目前我一共阅读了1-9章的内容，这里我说说ES6里的新特性吧&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(1)新增块级变量和常量&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1.块级变量：&lt;/p&gt;
+
+&lt;p&gt;使用let命令声明变量，使用方法同var  但所声明的变量只在let命令所在的代码块内才有效,能最好展示其作用的一个例子：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var a=[];  
+
+for(var i = 0; i &amp;lt; 10; i++) {
+  a[i] = function() {
+	console.log(i);
+  };
+}  
+
+a[2]; //10
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在这段代码中，我们始终不能实现&lt;code class=&quot;highlighter-rouge&quot;&gt;a[i]() =&amp;gt; i&lt;/code&gt; 这样的结果,这也是当初在学JS时要求在for循环里注意闭包，显然代码语义是准确，但执行中却不如人意，有了块级作用域就很好解决这个问题，将上面代码换成块级作用域后就能得到我们想要的效果&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var a=[];  
+
+for(let i = 0; i &amp;lt; 10; i++) {
+  a[i] = function() {
+	console.log(i);
+  };
+}  
+
+a[2]; //2
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;块级作用域将会对刚入手JS的开发者来说是更友好的&lt;/p&gt;
+
+&lt;p&gt;2.常量：&lt;/p&gt;
+
+&lt;p&gt;使用const命令声明，这个感觉是对var的升级, 一旦声明后就不能在改变,与let命令相同的是作用域，只在声明所在的块级作用域内有效, 将一个对象定位为一个常量后需要注意的是，const储存的一个指引该对象的地址，可以为该常量对象赋值，但是不可以改变地址：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const a={};  
+a.name = &#39;test&#39;
+a.name // &#39;test&#39;
+
+a = {name:&#39;test&#39;} //这里就会报错了，已经改变了a的读取地址
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(2)变量的解构赋值&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;解构赋值是什么东东呢？我认为&lt;code class=&quot;highlighter-rouge&quot;&gt;解构赋值&lt;/code&gt;这个中文翻译就能解释这个功能，分解结构后对应赋值，咋解释呢？，数组的解构赋值就能最简洁的说明：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var [a,b,c]=[1,[2,3],[4,5]];  
+  
+//1.分解结构 左右两边都是数组
+//2.开始赋值 var a=1...
+//3.b=[2,3] error 这里就不行了，
+//因为在第一步分解结构中，其实已经识别出b对应的[2,3]结构不一样  
+//所以会出错，这叫不完全结构
+//但是很有意思的是，这里会将2赋值给b，将4赋值给c
+//如果我要赋值一个数组怎么破呢？
+//那么需要使用rest参数和扩展运算符了
+
+let [x,...y] = [1,2,3,4];
+x //1
+y //[2,3,4]
+//rest参数和扩展运算符在后面文章中我会提及的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;但是对象的解构赋值就稍微有点难理解了，需要&lt;code class=&quot;highlighter-rouge&quot;&gt;转个弯&lt;/code&gt;才能看明白，虽然难理解了点儿，但解构能力肯定就会更牛，首先引用书里的例子说明一个简单的解构赋值：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let {foo ,bar} = {foo: &#39;aaa&#39;, bar: &#39;bbb&#39;};
+foo //&#39;aaa&#39;
+bar //&#39;bbb&#39;
+
+//但是需要注意的是
+//执行中foo并不是{foo,bar}中的foo
+//执行中bar并不是{foo,bar}中的bar
+//这个咋解释呢？ 这不是明摆着一样的嘛
+//下面我会解释为什么foo不是foo
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这就是一个简单的对象解构赋值，对象解构赋值跟左右排列的顺序没有半毛钱关系，对象的解构主要取决于&lt;code class=&quot;highlighter-rouge&quot;&gt;变量必须与属性同名&lt;/code&gt;，这也是正确解构的关键，也是为什么对象解构不依赖排列顺序的关键：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let {foo ,bar} = {bar: &#39;bbb&#39;， foo: &#39;aaa&#39;};
+foo //&#39;aaa&#39;
+bar //&#39;bbb&#39;
+
+let {foo: bb} = {foo: &#39;bb&#39;};
+foo //以为会是&#39;bb&#39;，其实这里就会报错
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;为什么最后一个例子中foo不能被赋值呢，其实不是没有赋值，而是赋值给了&lt;code class=&quot;highlighter-rouge&quot;&gt;bb&lt;/code&gt;,这里就说明了对象解构赋值的机制是：&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;先找到同名属性，然后再赋给对应的变量&lt;/code&gt;，所以这里就能解释为什么foo不是foo：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let {foo ,bar} = {bar: &#39;bbb&#39;， foo: &#39;aaa&#39;};
+//左右的foo可以理解为一个解构参照点，在内部解构中其实是这样的
+{foo: foo, bar: bar} = {bar: &#39;bbb&#39;， foo: &#39;aaa&#39;}
+//这里会默认的给前面的foo一个同名属性，然后参照foo来寻找后面的对应变量
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;虽然有点绕但是在复杂运用中就显得很有用了：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;let obj= {p: [&quot;hello&quot;, {y: &quot;es6&quot;}]};
+
+var {p: [x, {y}]} = obj;
+
+p // 无任何赋值
+x // &#39;hello&#39;
+y // &#39;es6&#39;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这里就能看出对象解构赋值的能力了，当然理解对象解构赋值我认为会对模块中函数方法的简写带来了可读性和提升内部的解析能力。&lt;/p&gt;
+</description>
+        <pubDate>Mon, 22 Aug 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/08/22/es6</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/08/22/es6</guid>
+        
+        
+        <category>ES-6</category>
+        
+      </item>
     
       <item>
         <title>基于meteor和react构建的在线聊天应用</title>
