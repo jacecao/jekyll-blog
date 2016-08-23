@@ -6,9 +6,98 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Aug 2016 00:13:21 +0800</pubDate>
-    <lastBuildDate>Tue, 23 Aug 2016 00:13:21 +0800</lastBuildDate>
+    <pubDate>Tue, 23 Aug 2016 18:32:57 +0800</pubDate>
+    <lastBuildDate>Tue, 23 Aug 2016 18:32:57 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>MongoDB的安装和简单使用</title>
+        <description>&lt;p&gt;如何快速在本地搭建测试环境的MongoDB数据服务呢？这里我把自己经过实践可行的步骤告诉大家，同时将MongoDB的简单运用罗列一下，相信会帮助大家可以很快的上手Node+MongoDB的运用。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1.安装和环境变量&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.mongodb.com/download-center?jmp=nav#community&quot;&gt;下载地址&lt;/a&gt;
+目前MongoDB已经不再提供压缩包，只有安装包可供选择，具体安装方法可以参考这里&lt;a href=&quot;http://jingyan.baidu.com/article/ed15cb1b52b8661be2698162.html&quot;&gt;（Windows下面安装和使用mongodb）&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;需要注意的是在第8-11步中环境设置 需要根据自己的安装位置做调整，还有就是一定要注意输入命令是否准确，截至目前（2016-8）按照上面所提供的步骤是能完成整个安装的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.客户端的简单使用&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mongo&lt;/code&gt;连接数据库，这里模拟连接本地端口的数据库&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mongo 127.0.0.1:27017 //连接到本地默认端口
+
+MongoDB shell version: 3.2.7
+connecting to: 127.0.0.1:27017/test
+
+//连接成功后会显示Shell的版本和目前默认连接的数据库
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;在实际运用中远程连接命令应该是这样：&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;mongo 远程主机IP或DNS:端口号/数据库名字 -u 用户名 -p 密码&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;show&lt;/code&gt;显示数据库&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;show dbs&lt;/code&gt;这里会将所有的数据库显示出来&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;use&lt;/code&gt;读取和新建数据库&lt;br /&gt;
+这里很有意思的是不管你输入什么名字的数据库，即使不存在该数据库，也会返回&lt;code class=&quot;highlighter-rouge&quot;&gt;switched to db xxx&lt;/code&gt;这样的结果,表示你已进入该数据库了。
+但是通过&lt;code class=&quot;highlighter-rouge&quot;&gt;show dbs&lt;/code&gt;时依然没有该数据库。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;所以mongodb在创建数据库和读取数据库的操作中是非常灵活的，
+像是一块庄园，你随便走到那块地都可以说是我的，你想在每块地
+种啥都行，但只要你没有实际行动（对这块土地采取实际行动），
+这块庄园就不能注册到你名下。
+那么如何创建一个数据库呢，只需要你在该数据库中录入数据，那么
+这个数据库就成立了
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;db&lt;/code&gt;操作数据块&lt;code class=&quot;highlighter-rouge&quot;&gt;insert()&lt;/code&gt;添加数据，注意&lt;code class=&quot;highlighter-rouge&quot;&gt;db&lt;/code&gt;这个命令在mongo中使用率极高&lt;/p&gt;
+
+&lt;p&gt;以上操作截图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo1.png&quot; alt=&quot;mongodb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;show collections&lt;/code&gt;显示所有数据集&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;db.集合名.find()&lt;/code&gt;查看指定集合的所有数据&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;db.集合名.find()c.count&lt;/code&gt;查看指定集合的数据个数&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.find({键值对配置项})&lt;/code&gt;来完成指定数据的查找&lt;/p&gt;
+
+&lt;p&gt;以上操作截图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo2.png&quot; alt=&quot;mongodb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.update()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;.save()&lt;/code&gt;数据的更新修改&lt;/p&gt;
+
+&lt;p&gt;具体操作如下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo3.png&quot; alt=&quot;mongodb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;需要注意的是&lt;code class=&quot;highlighter-rouge&quot;&gt;.save()&lt;/code&gt;只以_id为识别点来修改数据，而且被修改的数据中的所有数据全部清空，只保存当前你新加入的数据。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;remove()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;drop()&lt;/code&gt;删除数据&lt;/p&gt;
+
+&lt;p&gt;具体操作如下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo4.png&quot; alt=&quot;mongodb&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;需要注意的是remove()只能删除数据中的文档，但不能删除&lt;code class=&quot;highlighter-rouge&quot;&gt;_id&lt;/code&gt;，也就是并没有完全删除该数据集，如果想要删除该数据集那得使用&lt;code class=&quot;highlighter-rouge&quot;&gt;drop()&lt;/code&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 23 Aug 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/08/23/mongodb</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/08/23/mongodb</guid>
+        
+        
+        <category>MongoDB</category>
+        
+      </item>
     
       <item>
         <title>ES6中新增的基本变量声明和解构赋值 — (1)</title>
@@ -189,7 +278,7 @@ y // &#39;es6&#39;
 
 &lt;p&gt;虽然自己对Angular不是很了解，但我个人认为React的思路是非常超前的，也是未来发展的一种趋势，这一点在Angular2中就证明了React在组件开发中的预见性。&lt;/p&gt;
 
-&lt;p&gt;只是目前React就像一块主板，这台电脑究竟性能怎么样，还得看其他模块的支持度，当然随着React的发展，相信会有一个比较成熟的模块配置系统，目前meteor就是一个很好的列子嘛，而且在UI方面material design我还是非常看好的，这个标准会使得开发有一定的统一性和高效性，而且也符合React的开发思路，目前很多移动应用都在朝着个方向努力。&lt;/p&gt;
+&lt;p&gt;只是目前React就像一块主板，这台电脑究竟性能怎么样，还得看其他模块的支持度，当然随着React的发展，相信会有一个比较成熟的模块配置系统，目前meteor就是一个很好的例子嘛，而且在UI方面material design我还是非常看好的，这个标准会使得开发有一定的统一性和高效性，而且也符合React的开发思路，目前很多移动应用都在朝着个方向努力。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://reactjs.cn/react/docs/getting-started.html&quot;&gt;关于React的中文文档&lt;/a&gt;。&lt;/p&gt;
 

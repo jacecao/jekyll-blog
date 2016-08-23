@@ -1,0 +1,86 @@
+---
+layout: post
+title:  "MongoDB的安装和简单使用"
+categories: MongoDB
+---
+
+如何快速在本地搭建测试环境的MongoDB数据服务呢？这里我把自己经过实践可行的步骤告诉大家，同时将MongoDB的简单运用罗列一下，相信会帮助大家可以很快的上手Node+MongoDB的运用。
+
+**1.安装和环境变量**
+
+[下载地址](https://www.mongodb.com/download-center?jmp=nav#community)
+目前MongoDB已经不再提供压缩包，只有安装包可供选择，具体安装方法可以参考这里[（Windows下面安装和使用mongodb）](http://jingyan.baidu.com/article/ed15cb1b52b8661be2698162.html)
+
+需要注意的是在第8-11步中环境设置 需要根据自己的安装位置做调整，还有就是一定要注意输入命令是否准确，截至目前（2016-8）按照上面所提供的步骤是能完成整个安装的。
+
+**2.客户端的简单使用**
+
+`mongo`连接数据库，这里模拟连接本地端口的数据库
+
+
+```
+mongo 127.0.0.1:27017 //连接到本地默认端口
+
+MongoDB shell version: 3.2.7
+connecting to: 127.0.0.1:27017/test
+
+//连接成功后会显示Shell的版本和目前默认连接的数据库
+
+```
+在实际运用中远程连接命令应该是这样：  
+`mongo 远程主机IP或DNS:端口号/数据库名字 -u 用户名 -p 密码`
+
+`show`显示数据库
+ 
+`show dbs`这里会将所有的数据库显示出来  
+
+`use`读取和新建数据库  
+这里很有意思的是不管你输入什么名字的数据库，即使不存在该数据库，也会返回`switched to db xxx`这样的结果,表示你已进入该数据库了。
+但是通过`show dbs`时依然没有该数据库。
+
+```
+所以mongodb在创建数据库和读取数据库的操作中是非常灵活的，
+像是一块庄园，你随便走到那块地都可以说是我的，你想在每块地
+种啥都行，但只要你没有实际行动（对这块土地采取实际行动），
+这块庄园就不能注册到你名下。
+那么如何创建一个数据库呢，只需要你在该数据库中录入数据，那么
+这个数据库就成立了
+
+```
+
+`db`操作数据块`insert()`添加数据，注意`db`这个命令在mongo中使用率极高
+
+以上操作截图
+
+![mongodb](https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo1.png)
+
+`show collections`显示所有数据集
+  
+`db.集合名.find()`查看指定集合的所有数据
+
+`db.集合名.find()c.count`查看指定集合的数据个数
+
+`.find({键值对配置项})`来完成指定数据的查找
+
+以上操作截图
+
+![mongodb](https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo2.png)
+
+`.update()`和`.save()`数据的更新修改
+
+具体操作如下
+
+![mongodb](https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo3.png)
+
+需要注意的是`.save()`只以_id为识别点来修改数据，而且被修改的数据中的所有数据全部清空，只保存当前你新加入的数据。
+
+`remove()`和`drop()`删除数据
+
+具体操作如下
+
+![mongodb](https://raw.githubusercontent.com/jacecao/gif-img/master/mongo/mongo4.png)
+
+
+
+需要注意的是remove()只能删除数据中的文档，但不能删除`_id`，也就是并没有完全删除该数据集，如果想要删除该数据集那得使用`drop()`
+
