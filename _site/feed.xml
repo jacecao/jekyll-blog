@@ -6,9 +6,128 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Aug 2016 18:32:57 +0800</pubDate>
-    <lastBuildDate>Tue, 23 Aug 2016 18:32:57 +0800</lastBuildDate>
+    <pubDate>Wed, 24 Aug 2016 20:26:46 +0800</pubDate>
+    <lastBuildDate>Wed, 24 Aug 2016 20:26:46 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Mongoose与MongoDB的简单应用</title>
+        <description>&lt;p&gt;如果看了上篇MongoDB的简单实用，并亲自实践后，你会发现自己对MongoDB还是非常喜爱的，那么在Node.js中究竟是如何连接、操作的呢？那就来看看Node开发中目前（2016-8）必不可少的模块Mongoose。&lt;/p&gt;
+
+&lt;p&gt;Mongoose的使用非常友好的，基本符合MongoDB的指令操作习惯，所以学习起来没有那么多的阻碍，当然目前要想深入了解Mongoose的使用，建议大家还是去看&lt;a href=&quot;http://www.nodeclass.com/api/mongoose.html&quot;&gt;官方的使用文档&lt;/a&gt;,说实话API使用文档对英语要求并不高，只是很多开发人员一看见全是英文便不想再深入看下去，而且国内一些基础教程对API的使用讲解的并不完全，这里所以我建议大家去看官方文档。&lt;/p&gt;
+
+&lt;p&gt;希望这篇文章可以让你对Mongoose是如何与数据库连接操作有个基本了解。满足刚开始接触Node开发的朋友，能顺利的搭建数据库开发环境的要求。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;1.准备开发环境&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;【需要安装Node环境】&lt;/p&gt;
+
+&lt;p&gt;创建一个文件夹，我这里就直接以mongoose来命名的文件夹，这里我使用的是Sublime编辑器，通过Sublime打开文件夹。&lt;/p&gt;
+
+&lt;p&gt;然后打开后台进入该文件夹，安装Mongoose模块&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install mongoose&lt;/code&gt;安装成功后应该是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2.开始创建连接数据库文件&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;创建&lt;code class=&quot;highlighter-rouge&quot;&gt;model.js&lt;/code&gt;文件完成数据库配置工作&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;现在就完成了整个mongoose的部署&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mongoose.model(&#39;People&#39;,MovieSchema)&lt;/code&gt;中的People就会在创建数据库中以该名字为基础命名一个&lt;code class=&quot;highlighter-rouge&quot;&gt;peoples&lt;/code&gt;的数据集。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3.开始向数据库写入数据&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;创建&lt;code class=&quot;highlighter-rouge&quot;&gt;insert.js&lt;/code&gt;文件，该文件主要实现的功能就是写入数据&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose5.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在执行该文件之前，我们来看看我们的数据库是什么情况&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose4.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;现在我们通过后台来执行这个&lt;code class=&quot;highlighter-rouge&quot;&gt;insert.js&lt;/code&gt;，看看有什么奇迹发生&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose6.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;执行文件后再查看数据库&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose7.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;怎么样是不是觉得MongoDB没有mysql中的那么多要求&lt;/p&gt;
+
+&lt;p&gt;再看我们究竟是不是将数据写入了呢&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose8.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4.查找数据&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;创建&lt;code class=&quot;highlighter-rouge&quot;&gt;find.js&lt;/code&gt;文件,该文件主要实现数据查找&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose10.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在运行该文件之前，我们多次执行&lt;code class=&quot;highlighter-rouge&quot;&gt;insert.js&lt;/code&gt;文件来增加数据（insert.js中的数据大家可以改变一下），每次执行后需要使用&lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl+c&lt;/code&gt;来退出数据操作&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose11.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;执行find.js文件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose12.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接着我们再创建一个&lt;code class=&quot;highlighter-rouge&quot;&gt;findOne.js&lt;/code&gt;实现单个查找&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose13.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;执行findOne&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose14.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里是对第一个满足条件的数据进行操作&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4.删除数据&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;创建&lt;code class=&quot;highlighter-rouge&quot;&gt;remove.js&lt;/code&gt;文件,该文件主要实现数据删除&lt;/p&gt;
+
+&lt;p&gt;该文件我罗列了常见的集中删除方法（单条和多个删除）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose15-1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose15-2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5.或查找&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这个是为了实现对多个条件进行查找，创建&lt;code class=&quot;highlighter-rouge&quot;&gt;condition.js&lt;/code&gt;文件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose16.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;执行文件之前，我们通过对&lt;code class=&quot;highlighter-rouge&quot;&gt;insert.js&lt;/code&gt;的修改再追加几条数据，目前数据是这样的:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose17.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;执行文件后，我们看能不能把满足&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;username&#39;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;hiou&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;age&#39;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;27&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;的所有数据查找出来&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/jacecao/gif-img/master/mongoose/mongoose18.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;看来正确找到所有满足条件的数据，注意这里是或的关系，并不是要求所有条件都得满足。&lt;/p&gt;
+
+&lt;p&gt;好啦，这就是对mongoose的简单实用。&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 24 Aug 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/08/24/mongoose-1</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/08/24/mongoose-1</guid>
+        
+        
+        <category>Node与MongoDB</category>
+        
+      </item>
     
       <item>
         <title>MongoDB的安装和简单使用</title>
@@ -95,7 +214,7 @@ connecting to: 127.0.0.1:27017/test
         <guid isPermaLink="true">http://haiouyun.com/2016/08/23/mongodb</guid>
         
         
-        <category>MongoDB</category>
+        <category>Node与MongoDB</category>
         
       </item>
     

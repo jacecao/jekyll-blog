@@ -60,6 +60,9 @@
 	text-decoration: underline;
 }
 /* ************************* 代码高亮部分 ********************* */
+.highlighter-rouge .highlight {
+    background: #60d5d0;
+}
 .highlight
 {
 	width: 90%;
@@ -68,6 +71,11 @@
 .highlight pre
 {
 	text-align: left;
+	
+}
+code
+{
+	background-color: #60d5d0;
 }
 .item-blog p
 {
