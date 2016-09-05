@@ -6,8 +6,8 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 06 Sep 2016 00:33:07 +0800</pubDate>
-    <lastBuildDate>Tue, 06 Sep 2016 00:33:07 +0800</lastBuildDate>
+    <pubDate>Tue, 06 Sep 2016 01:11:40 +0800</pubDate>
+    <lastBuildDate>Tue, 06 Sep 2016 01:11:40 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -49,7 +49,7 @@
 
 &lt;p&gt;&lt;strong&gt;PropTypes的使用&lt;/strong&gt;&lt;br /&gt;
 《React入门》前面几个例子我略过，从propTypes说起啦， 
- 组件的属性&lt;code class=&quot;highlighter-rouge&quot;&gt;this.props&lt;/code&gt;可以接受任意值，字符串、对象、函数等等都可以。有时，我们需要一种机制，验证别人使用组件时，提供的参数是否符合要求。组件类的PropTypes属性，就是用来验证组件实例的属性是否符合要求注意这里组件创建的方式，必须这样才能生效使用上面的方式创建就不会生效。&lt;/p&gt;
+ 组件的属性&lt;code class=&quot;highlighter-rouge&quot;&gt;this.props&lt;/code&gt;可以接受任意值，字符串、对象、函数等等都可以。有时，我们需要一种机制，验证别人使用组件时，提供的参数是否符合要求。组件类的PropTypes属性，就是用来验证组件实例的属性是否符合要求。&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Myprotypes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
         
