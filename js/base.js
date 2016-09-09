@@ -121,7 +121,8 @@ define(['jquery','renderUI'],function($,renderUI){
       });
       $(window).bind( 'touchmove' , function(){
         opt.end_x = Math.floor(event.touches[0].pageX - opt.start_x );
-        if( opt.end_x < -10 && opt.end_x > -300 )
+        //toucheMove的目标不能是文本框
+        if( opt.end_x < -50 && event.target.nodeName !== 'PRE' )
         {
           $('.side-bar').css( 'transform' , 'translate3d('+ (300+opt.end_x) +'px, 0, 0)');
           opt.do = true;
@@ -132,13 +133,13 @@ define(['jquery','renderUI'],function($,renderUI){
         opt.end_time = new Date() * 1;
         var _time = opt.end_time - opt.start_time;
         
-        if( !opt.open && opt.do ){//当opt.open为真是表示侧边栏已经打开，不再执行这里的函数，否则就会有BUG
+        if( !opt.open && opt.do && event.target.nodeName !== 'PRE' ){//当opt.open为真是表示侧边栏已经打开，不再执行这里的函数，否则就会有BUG
           
-          if( _time >= 600 && opt.end_x <= -50){
+          if( _time >= 100 && opt.end_x <= -100){
             $('.local').fadeIn();
             $('.side-bar').css( 'transform' , 'translate3d(0, 0, 0)');
             opt.open = true;
-          }else if( opt.end_x >= 100 || _time <= 500 ){
+          }else if( opt.end_x >= 50 || _time < 100 ){
             $('.side-bar').css( 'transform' , 'translate3d(300px, 0, 0)');
             opt.do = false;
           }else{
