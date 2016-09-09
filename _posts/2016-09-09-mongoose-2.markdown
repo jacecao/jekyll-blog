@@ -1,0 +1,165 @@
+---
+layout: post
+title:  "Mongoose对MongoDB的近一步应用"
+categories: Node与MongoDB
+---
+
+今儿接着说Mongoose的近一步使用方法，这些方法也是在数据储存中会比较常用的，废话少说，直接看代码吧。
+
+***
+
+**环境准备**  
+创建Test文件夹，在该文件夹中安装mongoose模块。
+
+**设置默认值**  
+设置默认值，这个很好理解，方便在用户不给值时自动加入我们设置的默认值。
+
+```javascript
+
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://127.0.0.1:27017/test2');
+
+var UserSchema = new mongoose.Schema({
+  //如何一个数据的默认值
+  nickname: {
+    type: String,
+    //设置默认值
+    default: 'new user'
+  },
+  regTime: {
+    type: Date,
+    //设置一个动态的默认值
+    default: Date.now
+  }
+});
+
+var User = mongoose.model('User',UserSchema);
+
+var user = new User();
+
+console.log('user:', user);
+
+});
+
+
+```
+
+**模式修饰符**  
+模式修饰符主要是为了更好的规范我们对数据的整理和储存，这里主要罗列常用的几种修饰符
+
+```javascript
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/test2');
+
+var User2 = mongoose.model('User',{
+  name: {
+    type: String,
+    //去除前后空格trim
+    trim: true 
+  },
+  blog: {
+    type: String,
+    //检查/设定数据特殊值
+    set: function( url ) {
+      if( !url ) return url;
+      if( url.indexOf('http://') !== 0 && url.indexOf('https://')!==0 ) {
+        url = 'http://' + url;
+        return url;
+      }else{
+        return url;
+      }
+    }
+  }
+});
+
+var user = new User2({
+  name: '  Jxxx ',
+  blog: 'baidu.com'
+});
+
+console.log('user:',user);
+
+```
+上面的set属性是指我们通过一定的方法来使数据达到我们想要的储存规范，这里就是要求网址必须含有http://来储存。
+同样我们也可以在取值的时候也给设定一个方法，使得我们取得的数据符合我们需要的格式
+
+```javascript
+
+var User = mongoose.model('User',{
+  blog: {
+    type: String,
+    //在取值过程中检查是否需要添加'http://'
+    get: function(url){
+      if( !url ) return url;
+      if( url.indexOf('http://') !== 0 && url.indexOf('https://')!==0 ) {
+        url = 'http://' + url;
+        return url;
+      }else{
+        return url;
+      }
+    }
+  }
+});
+
+var user = new User({
+  blog: 'baidu.com'
+});
+
+user.save(function(err) {
+  if(err){ return console.log(err); }
+  console.log('url',user.blog);
+});
+
+```
+需要注意的是模式修饰符是使用在模式设置中，而不是一个实例对象，也就是用在Schema的创建中。
+
+
+**虚拟属性的使用 virtual**
+所以虚拟属性其实类似于JS中prototype，让该模式拥有一个特定的功能，但是该属性是不会作为数据存入到数据库中。
+
+```javascript
+
+var mongoose = require('mongoose');
+
+var PersonSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String
+});
+
+//定义一个虚拟属性，该属性是不会写入数据库的
+PersonSchema.virtual('fullName').get(function() {
+  return this.firstName+' '+this.lastName;
+});
+
+var Person = mongoose.model('Person',PersonSchema);
+
+var person = new Person({
+  firstName: 'cao',
+  lastName: 'Chen'
+});
+
+console.log('person: ',person.fullName);
+
+```
+
+假如我们想要得到虚拟属性中数据咋办呢，这里就需要通过JSON来处理了
+
+
+```javascript
+........
+//设置在转换为JSON数据时将虚拟属性写入
+PersonSchema.set('toJSON',{getters: true, virtual:true});
+
+var Person = mongoose.model('Person',PersonSchema);
+var person = new Person({
+  firstName: 'cao',
+  lastName: 'Chen'
+});
+
+//转换为JSON数据，这里就会得到包含虚拟属性（值）的一个对象
+console.log('Json: ',JSON.stringify(person));
+
+```
+

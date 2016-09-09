@@ -4,7 +4,7 @@ title:  "React入门笔记"
 categories: React
 ---
 
-最近工作较忙也没来得及更新博客，今天主要贴上我入门React的笔记，主要还是跟着阮一峰前辈的[React入门](http://www.ruanyifeng.com/blog/2015/03/react.html)来学习，我的笔记很多代码还是来源该教程，但作了一些更新，目前更新主要是2个方面：
+最近工作较忙也没来得及更新博客，今儿贴上我入门React的笔记，主要还是跟着阮一峰前辈的[React入门](http://www.ruanyifeng.com/blog/2015/03/react.html)来学习，我的笔记很多代码还是来源该教程，但作了一些更新，目前更新主要是2个方面：
 
 ```  
 1.更新一些方法在ES6中的使用，和ES6代码的书写方式 
