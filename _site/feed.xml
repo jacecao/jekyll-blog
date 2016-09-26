@@ -6,8 +6,8 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 25 Sep 2016 15:54:31 +0800</pubDate>
-    <lastBuildDate>Sun, 25 Sep 2016 15:54:31 +0800</lastBuildDate>
+    <pubDate>Mon, 26 Sep 2016 18:10:23 +0800</pubDate>
+    <lastBuildDate>Mon, 26 Sep 2016 18:10:23 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -16,7 +16,7 @@
 
 &lt;p&gt;&lt;strong&gt;(1)好用的模板字符串&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;如果常用jQuery那一定会经常遇到添加DOM中需要遇到添加变量的问题，一定有变量加入，让我们在写代码中不得不注意自己的字符串拼接是不是有毛病，而现在有了模板字符串，这事就变得容易多了：&lt;/p&gt;
+&lt;p&gt;如果常用jQuery那一定会经常遇到添加DOM中需要遇到添加变量的问题，一旦有变量加入，让我们在写代码中不得不注意自己的字符串拼接是不是有毛病，而现在有了模板字符串，这事就变得容易多了：&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;//之前是这样写的&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
@@ -85,7 +85,7 @@
 
 &lt;p&gt;3.箭头后面能怎么书写&lt;/p&gt;
 
-&lt;p&gt;一般有3中书写方法：&lt;/p&gt;
+&lt;p&gt;一般有3种书写方法：&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 &lt;span class=&quot;c1&quot;&gt;// 1直接返回值时&lt;/span&gt;
