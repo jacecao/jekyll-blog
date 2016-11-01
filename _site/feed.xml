@@ -6,9 +6,168 @@
 </description>
     <link>http://haiouyun.com/</link>
     <atom:link href="http://haiouyun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 25 Oct 2016 09:34:21 +0800</pubDate>
-    <lastBuildDate>Tue, 25 Oct 2016 09:34:21 +0800</lastBuildDate>
+    <pubDate>Tue, 01 Nov 2016 16:42:36 +0800</pubDate>
+    <lastBuildDate>Tue, 01 Nov 2016 16:42:36 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>二进制与JS中的浮点值运算</title>
+        <description>&lt;p&gt;在刚学习关于JavaScript中的数值运算时，一定听前辈们讲过JS（JavaScript）在对浮点运算时并不是我们想象中那样的精确。我们可以打开chrome调试台检验一下：&lt;code class=&quot;highlighter-rouge&quot;&gt;0.01 + 0.06 == 0.07&lt;/code&gt; 结果输出为&lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;,这是为什么呢？为什么能做复杂计算的计算机却无法好好完成&lt;code class=&quot;highlighter-rouge&quot;&gt;0.01+0.06 = 0.07&lt;/code&gt;这样的运算呢？让我们探探究竟是为什么呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;首先让我们测试计算机的小数计算&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;秉着实践出真知的精神，让我们多做几个测试了解一下计算机对小数运算都有什么样结果：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// 看看0.01 + 0.06的结果究竟是多少
+0.01 + 0.06
+=&amp;gt; 0.06999999999999999
+// 为何有这么多小数点？
+// 再看看0.1 + 0.6
+0.1 + 0.6
+=&amp;gt; 0.7
+// 为啥这个是正确的
+// 再来一个
+1.1 - 1.0
+=&amp;gt; 0.10000000000000009
+// 咋又是这样呢？
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;为何有些小数计算是符合我们平常的计算结果？有些又为什么还无故有那么多&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;？ 究竟这其中发生了什么？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;浅谈计算机和二进制&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;估计很多伙伴都和我一样希望搞懂计算机是如何完成我们日常各种任务处理的，一块堆满各种元器件的电路板是如何识别我们指定的各种指令的？这些疑惑如果要一一解答出来真不是普通爱好者所能研究透的，那有没有途径可以让我们从电子和电路学来解开计算机的工作原理？目前我还没有找到国内的学习资料（指小白爱好者就能搞清楚的资料），还好网易有一套视频能让我们多少获得一些基本原理，推荐计算机爱好者可以看看&lt;a href=&quot;http://open.163.com/special/opencourse/circuits.html&quot;&gt;麻省理工公开课：电路和电子学&lt;/a&gt;，这门课程试图从我们高中物理知识开始探寻电子和电路，试图从一个元器件的结构到最后如何构建一个有实际意义的电路。&lt;/p&gt;
+
+&lt;p&gt;计算机为什么要采用二进制进行运算？就是基于最基本的电子元器件所表现出的特有稳定性（电信号的有无）来制定的，大家都知道早期的电子计算机都是二进制写入计算完成后再通过指示灯的亮灭将二进制运算结果表现出来，至今计算机底层依然是二进制运算，所以我们在浏览器控制台输入的数据最终都会转为二进制计算。&lt;/p&gt;
+
+&lt;p&gt;我们也还是有疑惑，这&lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt;咋就强大到可以我们玩游戏、看电影…..，其实电路不懂你给他赋予了0和1这回事，它只是知道目前自己的状态是怎么样的，是有信号还是没有信号，人们就通过电子组装出可以显示很多状态的有实际意义的电路，说简单点儿比如我们的红绿灯就是一个最简单的3位状态机，通过信号灯的熄灭可以表达8种信号状态，而这八种状态可以指挥车与人的行动，如果这里的车和人又是一个可以表达3位状态的电路，可以想象延续下去会组合多少个状态，&lt;code class=&quot;highlighter-rouge&quot;&gt;计算机就是通过这样的状态来完成人为约定的操作&lt;/code&gt;（不得不说电路的设计其实就是最前线的程序员，而每个集成电路就犹如我们程序中的每个模块，通过这些模块实现了最终的复杂电路信号状态传递）。&lt;/p&gt;
+
+&lt;p&gt;“对计算机理论的描述，计算机硬件电路的设计都是很有益的。比如逻辑电路设计中，既要考虑功能的完备，还要考虑用尽可能少的硬件，十六进制就能起到一些理论分析的作用。比如四位二进制电路，最多就是十六种状态，也就是一种十六进制形式，只有这十六种状态都被用上了或者尽可能多的被用上，硬件资源才发挥了尽可能大的作用。”&lt;br /&gt;
+&lt;i&gt;这段文字来自&lt;a href=&quot;http://baike.baidu.com/view/230306.htm?fromtitle=16%E8%BF%9B%E5%88%B6&amp;amp;fromid=8541382&amp;amp;type=syn&quot;&gt;百度百科-16进制&lt;/a&gt;&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;计算机运行的电路中没有二进制只有很多不同的状态，人们用二进制来记录这些状态也同时根据二进制来设计电路的状态&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;说说二进制运算&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;希望能通过上面的文字让非计算机专业的伙伴对计算机和二进制关系有一点儿了解，也希望通过上面的文字能让你好奇这二进制又是怎么运算的？二进制和十进制又是怎么转换的？&lt;/p&gt;
+
+&lt;p&gt;我非常推荐大家可以看看&lt;a href=&quot;http://baike.baidu.com/link?url=7RgG8YpGTKJ8ldgy44g5a0b3ZwArhmKPerLx-ed1rRZJUPa7RWa4Jj5B0BbKK_qlb7_ya8PvUKfZWUqAnUd6Wh_Bu8KeftORYO7rUbsjQQEj_fsJ24Q6FQJvSZlEQxArBl9jsDp-UNgbmb1PBADr5aJGKuSBFWtGD2CzBAXxYx1ZPXdajqzmqXmFGJUzS-nk#3_1&quot;&gt;百度百科-二进制&lt;/a&gt;，大家耐心看完后会明白二进制的运算方式，这里我们就来分析一下小数的二进制运算。 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;计算机中的十进制小数用二进制通常是用乘二取整法来获得的&lt;/code&gt;，这个就是很关键的点，根据这个方法我们来计算一开始我们检验的几个数据：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+0.01 转二进制
+0.01 x 2 =&amp;gt; 0.02 =&amp;gt; 0
+0.02 x 2 =&amp;gt; 0.04 =&amp;gt; 0
+0.04 x 2 =&amp;gt; 0.08 =&amp;gt; 0
+0.08 x 2 =&amp;gt; 0.16 =&amp;gt; 0
+0.16 x 2 =&amp;gt; 0.32 =&amp;gt; 0
+0.32 x 2 =&amp;gt; 0.64 =&amp;gt; 0
+0.64 x 2 =&amp;gt; 1.24 =&amp;gt; 1
+0.24 x 2 =&amp;gt; 0.48 =&amp;gt; 0
+0.48 X 2 =&amp;gt; 0.96 =&amp;gt; 0
+0.96 X 2 =&amp;gt; 1.92 =&amp;gt; 1
+0.92 X 2 =&amp;gt; 1.84 =&amp;gt; 1
+0.84 X 2 =&amp;gt; 1.68 =&amp;gt; 1
+0.68 x 2 =&amp;gt; 1.36 =&amp;gt; 1
+.....
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;做到这里实在不想做下去了，这简直就是没有尽头嘛，所以这里小数根本没有办法转换为一个有限的二进制编码，只能根据计算机所约定的一个计算步骤来编码，
+这也就是为什么在运算中无故多出很多0的原因。&lt;/p&gt;
+
+&lt;p&gt;但奇怪的是为什么&lt;code class=&quot;highlighter-rouge&quot;&gt;0.1+0.6&lt;/code&gt;确是准确的&lt;code class=&quot;highlighter-rouge&quot;&gt;0.7&lt;/code&gt;，这是为什么？为什么？&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;我的猜测&lt;/strong&gt;这里我们需要猜测一下JS对浮点数运算究竟采取了什么计算？&lt;br /&gt;
+打开chrome浏览器控制台，我们试着做一下运算：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// 我们把0.1转换为2进制
+(0.1).toString(2)
+=&amp;gt; 0.0001100110011001100110011001100110011001100110011001101
+// 我们把0.6转换为2进制
+(0.6).toString(2)
+=&amp;gt; 0.10011001100110011001100110011001100110011001100110011
+(0.6+0.1).toString(2)
+=&amp;gt; 0.1011001100110011001100110011001100110011001100110011
+// 这里我们将2进制直接进行相加
+=&amp;gt; 0.1011001100110011001100110011001100110011001100110011001
+// 我们把0.7转换2进制
+=&amp;gt; 0.1011001100110011001100110011001100110011001100110011
+// 
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意&lt;/code&gt;我们直接相加0.1与0.6的二进制之和与将0.7转换为小数得到的值是不相等的，但是很关键的是(0.6+0.1)的二进制和0.7得到的二进制是相等的，可见JS在浮点运算时已经对精确度有一个设计模式在里面。但这个模式是怎么设计的我暂时不得而知，我们再来看看一个例子：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+0.1 + 0.2
+=&amp;gt; 0.30000000000000004
+// 进行二进制转换
+0.0001100110011001100110011001100110011001100110011001101(0.1)
+0.001100110011001100110011001100110011001100110011001101 (0.2)
+0.0100110011001100110011001100110011001100110011001100111(二进制相加)
+0.010011001100110011001100110011001100110011001100110011 (0.3)
+0.0100110011001100110011001100110011001100110011001101   (0.1+0.2运算结果)
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;注意&lt;/code&gt;0.1+0.2并没有得到0.3的原因是为什么呢？原来0.1+0.2得到的二进制和0.3的二进制是不相等的，那么上面那个精确度控制模式就无法发挥作用了，大家可以想象一下JS对浮点运算是如何设计的。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;如何让JS的浮点运算达到我们想要的精确值&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在过去通常是将小数转换为整数来运算，再将计算结果变为小数, 下面将常用的一个方法注释这里:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+// 以除法为例
+function test(ar1, ar2) {
+	// 定义变量
+	// L表示小数长度，N得到新的值
+	var L1, L2, N1, N2;
+
+	// 如果是3.5 =&amp;gt; &#39;3.5&#39; =&amp;gt; [&#39;3&#39;, &#39;5&#39;]
+	// 获得小数位数
+	L1 = (ar1).toString().split(&#39;.&#39;)[1].length;
+	L2 = (ar2).toString().split(&#39;.&#39;)[1].length;
+
+	// 将小数转为整数3.5 =&amp;gt; &#39;3.5&#39; =&amp;gt; &#39;35&#39; =&amp;gt; 35
+	N1 = Number( (ar1).toString().replace(&#39;.&#39;,&#39;&#39;) );
+	N2 = Number( (ar1).toString().replace(&#39;.&#39;,&#39;&#39;) );
+	
+	// 这一步我们以3.5/0.07为例来注释
+	// (35 / 7) * Math.pow(10, 2 - 1)
+	// 5 * 10^1 =&amp;gt; 50
+	return (N1 / N2) * Math.pow(10 ,L2 - L1)
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这些方法网上都有很多就不一一注释了，主要思路都是将小数化为整数再计算&lt;br /&gt;
+当然如果我们对精度没有太高要求我们可以这样做(超低版本浏览不支持该方法)；&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+(运算表达式).toFixed(需要保留小数位数)
+(0.1+0.2).toFixed(1) =&amp;gt; &#39;0.3&#39;
+// 注意这里运算结果是一个字符串
+// 所以我们需要用到parseFloat()转换为浮点数
+parseFloat( (num).toFixed(num) );
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate>
+        <link>http://haiouyun.com/2016/11/01/floating-poingt-arithmetic</link>
+        <guid isPermaLink="true">http://haiouyun.com/2016/11/01/floating-poingt-arithmetic</guid>
+        
+        
+        <category>认知JS</category>
+        
+      </item>
     
       <item>
         <title>ES6的模板字符串、箭头函数、对象的扩展 — (2)</title>
@@ -1079,42 +1238,6 @@ y // &#39;es6&#39;
         <pubDate>Tue, 26 Jul 2016 00:00:00 +0800</pubDate>
         <link>http://haiouyun.com/2016/07/26/meteor-react</link>
         <guid isPermaLink="true">http://haiouyun.com/2016/07/26/meteor-react</guid>
-        
-        
-        <category>React</category>
-        
-      </item>
-    
-      <item>
-        <title>跟着时代的步伐加入React</title>
-        <description>&lt;p&gt;为什么我要选择React作为我的第一个框架呢？其实真正的原因只有一个容易上手啦，不像Angular那样学习线路陡峭，而且目前国内的React发展也是相当迅速，后来有居上之势。&lt;/p&gt;
-
-&lt;p&gt;另外为了增强用户体验，SPA（single page web application,单页面开发）也是相当的火热，而如今react短小精干的架势个人觉得完全符合SPA开发，当然看各位大神对React的见解，要让React能在SPA中游刃有余还需要一个搞定前后端的伴侣，这里我依照先人们的足迹，选择的meteor。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;meteor是基于node的开发框架&lt;/code&gt;，关键数据的实时交互这点和SPA的要求是完全符合，SPA要的就是无刷新数据交互嘛。&lt;/p&gt;
-
-&lt;p&gt;今天就先说一下如何安装meteor吧，MAC安装这个就很容易了，windows要麻烦一点，我说一下windows吧。 进入&lt;a href=&quot;https://www.meteor.com/install&quot;&gt;下载页面&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;选择windows下载安装即可，这个下载速度嘛当然是有点虐心的，大家可以在下载阶段干点别的啥，&lt;/p&gt;
-
-&lt;p&gt;安装完成后，我们来生成一个项目页面，进入后台CMD&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;指定一个你需要创建的文件夹路径&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;meteor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xxxxx&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;项目名字&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;完成后等文件加载完毕，该项目就建立好了，然后进入该项目&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xxxxx&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;meteor&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;这里就跟操作Jekylls server命令是一样的，会告诉你一个页面在本地服务器已经启动了，你可以打开看看一般是http://localhost:3000/&lt;/p&gt;
-
-&lt;p&gt;接着我们就需要你准备好Node.js，将通过npm来安装react。&lt;/p&gt;
-
-</description>
-        <pubDate>Sun, 24 Jul 2016 00:00:00 +0800</pubDate>
-        <link>http://haiouyun.com/2016/07/24/meteor-react</link>
-        <guid isPermaLink="true">http://haiouyun.com/2016/07/24/meteor-react</guid>
         
         
         <category>React</category>
