@@ -176,6 +176,7 @@ a.prev-button:hover span
 	box-shadow: 0 0 8px 2px rgba(90,90,90,0.2);
 
 }
+/* ************************************************************* */
 .project-content a.pro_2
 {
 	background-position: 0 -181px;
@@ -192,6 +193,15 @@ a.prev-button:hover span
 {
 	background: #EAEAEA url('../img/project_bg2.PNG');
 }
+.project-content a.pro_5
+{
+	background: #EAEAEA url('../img/project_bg2.PNG');
+}
+.project-content a.pro_6
+{
+	background: #EAEAEA url('../img/project_3.jpg');
+}
+/* ************************************************************* */
 .project-message
 {
 	position: absolute;

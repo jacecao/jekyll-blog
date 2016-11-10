@@ -1,0 +1,48 @@
+/* 默认样式设置 */
+.about-li pre
+{
+	padding: 10px;
+	text-align: left;
+}
+
+
+/* 进度条 CSS3 demo */
+.demo_container, .demo_process, .demo_process::before
+{
+	border-radius: 2vw;
+	border-radius: 2vw;
+}
+.demo_container {
+  width: 40vw;
+  background-color: #42ab20;
+  margin: 5vh auto 0;
+  box-shadow: 0vw 1vh 3vh rgba(109, 168, 7, 0.8);
+}
+.demo_process {
+    height: 4vh;
+    position: relative;
+    width: 70%;
+    border: 1px solid #6DA807;
+    background-color: #73ab13;
+    background-size: 2.89em 2.89em;
+    background-image: linear-gradient(-45deg, #41ce0e 0em, #41ce0e 0.8em, #96D923 0.9em, #96D923 2.1em, #41ce0e 2.1em, #5dc836 2.9em, #96D923 2.9em, #96D923 4.1em);
+ 	animation: process-animation 750ms infinite linear;
+}
+@keyframes process-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2.89em 0;
+  }
+}
+.demo_process::before {
+  content: '';
+  width: 40vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #6DA807, rgba(171, 226, 77, 0.4) 15%, transparent 55%, #6DA807);
+}
+/***************************************************************/
