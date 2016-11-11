@@ -248,7 +248,7 @@ strong{
 		display: none;
 		position: fixed;
 		width: 240px;
-		background: rgba(30, 159, 196, 0.9);
+		background: #009688;
 		border-radius: 5px ;
 		opacity: 0;
 		z-index: 1000;

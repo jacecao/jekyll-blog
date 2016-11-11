@@ -157,7 +157,7 @@ title: 揭秘CSS3 — 如何制作一个Nice的进度条
             <dt><p>通过关键帧动画来实现进度条动画效果</p></dt>
             <dd>
               <p>主要通过background-position()来实现一个补帧动画，即当第一个动画完了时，第二动画紧接着来补上，实现一个连环动画的效果</p>
-              <p>background-position(x ,y)这个相信大家使用雪碧图(CSS精灵)，一定知道怎么用了，这里我就不再开说了，我们这里的设置必须时这样的x = 长方形边长，y = 0,这样做的目的时完成一个连环动画效果</p>
+              <p>background-position(x ,y)这个相信大家使用雪碧图(CSS精灵)，一定知道怎么用了，这里我就不展开说了，我们这里的设置必须时这样的x = 长方形边长，y = 0,这样做的目的是完成一个X轴方向（也就是不断水平向前运动的）连环动画效果</p>
               <pre>@keyframes warning-animation {
   0% {
     background-position: 0 0;
