@@ -48,6 +48,8 @@
 	-o-transition: all 0.8s;
 	-ms-transition: all 0.8s;
 	-moz-transition: all 0.8s;
+	background-color: #f7f7f7;
+	box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 .item-message
 {
