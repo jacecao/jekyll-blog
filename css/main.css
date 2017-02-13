@@ -35,7 +35,7 @@
 {
 	width: 80%;
 	margin: 20px auto;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 .item-body
 {
@@ -49,7 +49,8 @@
 	-ms-transition: all 0.8s;
 	-moz-transition: all 0.8s;
 	background-color: #f7f7f7;
-	box-shadow: 0 0 10px rgba(0,0,0,.3);
+	box-shadow: 0 0 10px rgba(0,0,0,.2);
+	border-radius: 10px;
 }
 .item-message
 {
